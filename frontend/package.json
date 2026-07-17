@@ -29,7 +29,7 @@
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.26.0",
     "recharts": "^2.12.7",
-    "three": "^0.165.0",
+    "three": "^0.169.0",
     "zustand": "^4.5.4"
   },
   "browserslist": {
