@@ -40,10 +40,14 @@ const envSchema = Joi.object({
   CRYPTO_NETWORK:             Joi.string().optional().allow(''),
 }).unknown(true);
 
-const { error, value } = envSchema.validate(process.env);
+let { error, value } = envSchema.validate(process.env, { abortEarly: false });
 
 if (error) {
-  throw new Error(`[ENV] Variable de entorno inválida: ${error.message}`);
+  console.warn(`[ENV] Advertencia — variables de entorno inválidas o faltantes:`);
+  error.details.forEach(d => console.warn(`  · ${d.message}`));
+  console.warn(`[ENV] El servidor igualmente arrancará con valores por defecto`);
+  const { error: _, value: partial } = envSchema.validate(process.env, { abortEarly: false, allowUnknown: true, stripUnknown: true });
+  value = partial;
 }
 
 module.exports = value;
