@@ -1,0 +1,14 @@
+{
+  "maintenance_mode": {
+    "enabled": true,
+    "message": "El panel está en mantenimiento. Volvemos pronto."
+  },
+  "exchange_rates": {
+    "USD": 1,
+    "ARS": 1500,
+    "BRL": 5,
+    "EUR": 0.92
+  }
+}
+
+
