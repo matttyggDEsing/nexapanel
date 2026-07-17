@@ -28,7 +28,7 @@ INSERT IGNORE INTO `users`
 VALUES (
   'Admin',
   'admin@nexapanel.io',
-  '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBaQ.K4tq3o2Ge',
+  '$2a$12$TCiCdAlZ264S0YSEEQYZyuIFSdznmrDkd7FUngmv18O5NVvx2q1c2',
   'admin',
   0.0000,
   LOWER(CONCAT(
