@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="91mm" height="61mm" viewBox="0 0 91 61">
+  <defs>
+    <linearGradient id="gen-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <!-- Guías de corte -->
+  <g stroke="#000" stroke-width="0.15" fill="none">
+    <line x1="0" y1="0" x2="-3" y2="0"/><line x1="0" y1="0" x2="0" y2="-3"/>
+    <line x1="88" y1="0" x2="91" y2="0"/><line x1="88" y1="0" x2="88" y2="-3"/>
+    <line x1="0" y1="58" x2="-3" y2="58"/><line x1="0" y1="58" x2="0" y2="61"/>
+    <line x1="88" y1="58" x2="91" y2="58"/><line x1="88" y1="58" x2="88" y2="61"/>
+    <line x1="1.5" y1="0" x2="1.5" y2="1.5"/><line x1="0" y1="1.5" x2="1.5" y2="1.5"/>
+    <line x1="86.5" y1="0" x2="86.5" y2="1.5"/><line x1="88" y1="1.5" x2="86.5" y2="1.5"/>
+    <line x1="1.5" y1="58" x2="1.5" y2="59.5"/><line x1="0" y1="59.5" x2="1.5" y2="59.5"/>
+    <line x1="86.5" y1="58" x2="86.5" y2="59.5"/><line x1="88" y1="59.5" x2="86.5" y2="59.5"/>
+  </g>
+  <!-- Bleed -->
+  <rect x="0" y="0" width="91" height="61" fill="#060A0E"/>
+  <!-- Patrón decorativo: líneas topográficas orgánicas -->
+  <g fill="none" stroke-linecap="round" opacity="0.045">
+    <path d="M-15,3 C12,15 38,-3 62,8 C88,19 105,2 125,10" stroke="#10B981" stroke-width="0.25"/>
+    <path d="M-15,10 C12,22 38,4 62,15 C88,26 105,9 125,17" stroke="#34D399" stroke-width="0.25"/>
+    <path d="M-15,17 C12,29 38,11 62,22 C88,33 105,16 125,24" stroke="#10B981" stroke-width="0.25"/>
+    <path d="M-15,24 C12,36 38,18 62,29 C88,40 105,23 125,31" stroke="#059669" stroke-width="0.25"/>
+    <path d="M-15,31 C12,43 38,25 62,36 C88,47 105,30 125,38" stroke="#34D399" stroke-width="0.25"/>
+    <path d="M-15,38 C12,50 38,32 62,43 C88,54 105,37 125,45" stroke="#10B981" stroke-width="0.25"/>
+    <path d="M-15,45 C12,57 38,39 62,50 C88,61 105,44 125,52" stroke="#10B981" stroke-width="0.25"/>
+    <path d="M-15,52 C12,64 38,46 62,57 C88,68 105,51 125,59" stroke="#34D399" stroke-width="0.2"/>
+  </g>
+  <!-- Divisor vertical -->
+  <line x1="44" y1="9" x2="44" y2="53" stroke="#10B981" stroke-width="0.2" opacity="0.25"/>
+  <!-- Columna izquierda: isotipo NEXA + logotipo + tagline -->
+  <!-- Isotipo Core mini -->
+  <g transform="translate(16, 20)">
+    <polygon points="-7,-10.5 -2,-12 -2,7 -7,8.5" fill="url(#gen-grad)"/>
+    <polygon points="-7,-10.5 -2,-12 -7,-5.5 -12,-4" fill="#34D399" opacity="0.7"/>
+    <polygon points="-7,8.5 -2,7 -7,14 -12,12.5" fill="#059669" opacity="0.5"/>
+    <polygon points="-2,-12 3.5,-5.5 3.5,7 -2,7" fill="#10B981"/>
+    <polygon points="3.5,-5.5 9,-7 9,7 3.5,7" fill="#059669"/>
+    <polygon points="3.5,-5.5 9,-7 3.5,0 -2,1.5" fill="#34D399" opacity="0.7"/>
+  </g>
+  <!-- NEXA logotipo -->
+  <text x="16" y="39" font-family="'Syne',sans-serif" font-size="7" font-weight="800" fill="#F0F4F8" letter-spacing="0.5">NEXA</text>
+  <!-- Tagline en dos líneas -->
+  <text x="16" y="44.5" font-family="'DM Sans',sans-serif" font-size="2.5" fill="#8A9BB0">Tecnología</text>
+  <text x="16" y="48.5" font-family="'DM Sans',sans-serif" font-size="2.5" fill="#8A9BB0">que trasciende</text>
+  <!-- Columna derecha: servicios -->
+  <g transform="translate(48, 0)">
+    <text x="0" y="16" font-family="'Syne',sans-serif" font-size="3.5" font-weight="700" fill="#10B981" letter-spacing="1">SERVICIOS</text>
+    <line x1="0" y1="18.5" x2="38" y2="18.5" stroke="#10B981" stroke-width="0.25" opacity="0.4"/>
+    <g font-family="'DM Sans',sans-serif" font-size="2.6" fill="#F0F4F8">
+      <text x="0" y="26">Diseño de Software</text>
+      <text x="0" y="32">Desarrollo de páginas web</text>
+      <text x="0" y="38" font-size="2.5">Programación / Apps a medida</text>
+    </g>
+  </g>
+</svg>
