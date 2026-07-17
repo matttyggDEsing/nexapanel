@@ -89,8 +89,17 @@ app.use(errorHandler);
 
 // ── Inicio ─────────────────────────────────────────────────────────────────
 const start = async () => {
-  await testDB();
-  await testRedis();
+  try {
+    await testDB();
+  } catch (err) {
+    logger.warn('[DB] MySQL no disponible, el servidor igualmente arrancará:', err.message);
+  }
+
+  try {
+    await testRedis();
+  } catch (err) {
+    logger.warn('[Redis] Redis no disponible, el servidor igualmente arrancará:', err.message);
+  }
 
   orderProcessor.start();
   balanceMonitor.start();
