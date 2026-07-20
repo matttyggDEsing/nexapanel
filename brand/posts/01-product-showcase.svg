@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="emGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EE7B7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#10B981" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="cardClip"><rect x="60" y="200" width="960" height="620" rx="16"/></clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#060A0E"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#10B981" stroke-width="0.5" fill="none">
+    <line x1="0" y1="0" x2="0" y2="1080"/>
+    <line x1="60" y1="0" x2="60" y2="1080"/>
+    <line x1="120" y1="0" x2="120" y2="1080"/>
+    <line x1="180" y1="0" x2="180" y2="1080"/>
+    <line x1="240" y1="0" x2="240" y2="1080"/>
+    <line x1="300" y1="0" x2="300" y2="1080"/>
+    <line x1="360" y1="0" x2="360" y2="1080"/>
+    <line x1="420" y1="0" x2="420" y2="1080"/>
+    <line x1="480" y1="0" x2="480" y2="1080"/>
+    <line x1="540" y1="0" x2="540" y2="1080"/>
+    <line x1="600" y1="0" x2="600" y2="1080"/>
+    <line x1="660" y1="0" x2="660" y2="1080"/>
+    <line x1="720" y1="0" x2="720" y2="1080"/>
+    <line x1="780" y1="0" x2="780" y2="1080"/>
+    <line x1="840" y1="0" x2="840" y2="1080"/>
+    <line x1="900" y1="0" x2="900" y2="1080"/>
+    <line x1="960" y1="0" x2="960" y2="1080"/>
+    <line x1="1020" y1="0" x2="1020" y2="1080"/>
+    <line x1="1080" y1="0" x2="1080" y2="1080"/>
+    <line x1="1140" y1="0" x2="1140" y2="1080"/>
+    <line x1="0" y1="0" x2="1080" y2="0"/>
+    <line x1="0" y1="60" x2="1080" y2="60"/>
+    <line x1="0" y1="120" x2="1080" y2="120"/>
+    <line x1="0" y1="180" x2="1080" y2="180"/>
+    <line x1="0" y1="240" x2="1080" y2="240"/>
+    <line x1="0" y1="300" x2="1080" y2="300"/>
+    <line x1="0" y1="360" x2="1080" y2="360"/>
+    <line x1="0" y1="420" x2="1080" y2="420"/>
+    <line x1="0" y1="480" x2="1080" y2="480"/>
+    <line x1="0" y1="540" x2="1080" y2="540"/>
+    <line x1="0" y1="600" x2="1080" y2="600"/>
+    <line x1="0" y1="660" x2="1080" y2="660"/>
+    <line x1="0" y1="720" x2="1080" y2="720"/>
+    <line x1="0" y1="780" x2="1080" y2="780"/>
+    <line x1="0" y1="840" x2="1080" y2="840"/>
+    <line x1="0" y1="900" x2="1080" y2="900"/>
+    <line x1="0" y1="960" x2="1080" y2="960"/>
+    <line x1="0" y1="1020" x2="1080" y2="1020"/>
+    <line x1="0" y1="1080" x2="1080" y2="1080"/>
+    <line x1="0" y1="1140" x2="1080" y2="1140"/>
+  </g>
+
+  <!-- Topographic lines -->
+  <g opacity="0.06" stroke="#34D399" stroke-width="1" fill="none">
+    <path d="M0,100 Q270,60 540,120 T1080,80"/>
+    <path d="M0,140 Q270,100 540,160 T1080,120"/>
+    <path d="M0,180 Q270,140 540,200 T1080,160"/>
+  </g>
+
+  <!-- Glow orb top right -->
+  <circle cx="900" cy="150" r="200" fill="#10B981" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- Badge -->
+  <rect x="60" y="60" width="140" height="36" rx="18" fill="#10B981" opacity="0.15"/>
+  <text x="130" y="84" font-family="Syne, sans-serif" font-weight="700" font-size="13" fill="#34D399" text-anchor="middle" letter-spacing="0.1em">PRODUCTO</text>
+
+  <!-- Isotipo small -->
+  <g transform="translate(920, 55) scale(0.35)">
+    <polygon points="20,0 40,10 40,30 20,20" fill="#10B981" opacity="0.8"/>
+    <polygon points="40,10 60,0 60,20 40,30" fill="#34D399" opacity="0.6"/>
+    <polygon points="0,20 20,30 20,50 0,40" fill="#059669" opacity="0.7"/>
+    <polygon points="20,30 40,20 40,40 20,50" fill="#10B981" opacity="0.5"/>
+    <polygon points="40,20 60,10 60,30 40,40" fill="#6EE7B7" opacity="0.6"/>
+    <polygon points="60,20 80,10 80,30 60,40" fill="#34D399" opacity="0.4"/>
+  </g>
+
+  <!-- Title -->
+  <text x="60" y="140" font-family="Syne, sans-serif" font-weight="800" font-size="52" fill="#F0F4F8">NexaPanel</text>
+  <text x="60" y="185" font-family="DM Sans, sans-serif" font-weight="400" font-size="20" fill="#8A9BB0">Tu panel SMM. Potencia infinita.</text>
+
+  <!-- Dashboard mockup card -->
+  <g clip-path="url(#cardClip)">
+    <rect x="60" y="200" width="960" height="620" rx="16" fill="#0B1117" stroke="#10B981" stroke-opacity="0.12" stroke-width="1"/>
+
+    <!-- Top bar -->
+    <rect x="60" y="200" width="960" height="50" fill="#111820"/>
+    <circle cx="90" cy="225" r="6" fill="#FF5F56"/>
+    <circle cx="110" cy="225" r="6" fill="#FFBD2E"/>
+    <circle cx="130" cy="225" r="6" fill="#27C93F"/>
+    <text x="540" y="230" font-family="DM Sans, sans-serif" font-size="13" fill="#5E7085" text-anchor="middle">nexapanel.com/dashboard</text>
+
+    <!-- Sidebar -->
+    <rect x="60" y="250" width="200" height="570" fill="#111820"/>
+    <rect x="80" y="270" width="160" height="8" rx="4" fill="#10B981" opacity="0.3"/>
+    <rect x="80" y="295" width="120" height="6" rx="3" fill="#5E7085" opacity="0.3"/>
+    <rect x="80" y="320" width="140" height="6" rx="3" fill="#5E7085" opacity="0.2"/>
+    <rect x="80" y="345" width="100" height="6" rx="3" fill="#5E7085" opacity="0.2"/>
+    <rect x="80" y="370" width="130" height="6" rx="3" fill="#5E7085" opacity="0.2"/>
+
+    <!-- Active menu item -->
+    <rect x="75" y="315" width="170" height="30" rx="8" fill="#10B981" opacity="0.1"/>
+    <rect x="85" y="323" width="8" height="8" rx="2" fill="#10B981"/>
+    <rect x="100" y="324" width="100" height="6" rx="3" fill="#10B981"/>
+
+    <!-- Main content area -->
+    <!-- Stats cards row -->
+    <rect x="280" y="270" width="220" height="100" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="300" y="300" font-family="DM Sans, sans-serif" font-size="11" fill="#5E7085">Pedidos activos</text>
+    <text x="300" y="335" font-family="Syne, sans-serif" font-weight="800" font-size="36" fill="#34D399">1,247</text>
+    <text x="300" y="355" font-family="DM Sans, sans-serif" font-size="11" fill="#10B981">+12.5% esta semana</text>
+
+    <rect x="520" y="270" width="220" height="100" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="540" y="300" font-family="DM Sans, sans-serif" font-size="11" fill="#5E7085">Ingresos</text>
+    <text x="540" y="335" font-family="Syne, sans-serif" font-weight="800" font-size="36" fill="#F0F4F8">$4,820</text>
+    <text x="540" y="355" font-family="DM Sans, sans-serif" font-size="11" fill="#10B981">+8.3% este mes</text>
+
+    <rect x="760" y="270" width="220" height="100" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="780" y="300" font-family="DM Sans, sans-serif" font-size="11" fill="#5E7085">Clientes</text>
+    <text x="780" y="335" font-family="Syne, sans-serif" font-weight="800" font-size="36" fill="#F0F4F8">892</text>
+    <text x="780" y="355" font-family="DM Sans, sans-serif" font-size="11" fill="#10B981">+5.2% este mes</text>
+
+    <!-- Chart area -->
+    <rect x="280" y="390" width="700" height="280" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="300" y="420" font-family="DM Sans, sans-serif" font-size="12" fill="#8A9BB0">Pedidos últimos 7 días</text>
+
+    <!-- Chart bars -->
+    <g transform="translate(320, 440)">
+      <rect x="0" y="80" width="50" height="120" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="25" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Mon</text>
+      <rect x="90" y="20" width="50" height="180" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="115" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Tue</text>
+      <rect x="180" y="50" width="50" height="150" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="205" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Wed</text>
+      <rect x="270" y="0" width="50" height="200" rx="6" fill="#10B981" opacity="0.8"/>
+      <text x="295" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Thu</text>
+      <rect x="360" y="30" width="50" height="170" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="385" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Fri</text>
+      <rect x="450" y="110" width="50" height="90" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="475" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Sat</text>
+      <rect x="540" y="60" width="50" height="140" rx="6" fill="#10B981" opacity="0.25"/>
+      <text x="565" y="218" font-family="DM Sans, sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Sun</text>
+    </g>
+
+    <!-- Bottom section -->
+    <rect x="280" y="690" width="340" height="110" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="300" y="720" font-family="DM Sans, sans-serif" font-size="12" fill="#8A9BB0">Servicios populares</text>
+    <rect x="300" y="738" width="80" height="22" rx="6" fill="#10B981" opacity="0.15"/>
+    <text x="340" y="754" font-family="DM Sans, sans-serif" font-size="10" fill="#34D399" text-anchor="middle">Instagram</text>
+    <rect x="390" y="738" width="65" height="22" rx="6" fill="#10B981" opacity="0.15"/>
+    <text x="422" y="754" font-family="DM Sans, sans-serif" font-size="10" fill="#34D399" text-anchor="middle">TikTok</text>
+    <rect x="465" y="738" width="65" height="22" rx="6" fill="#10B981" opacity="0.15"/>
+    <text x="497" y="754" font-family="DM Sans, sans-serif" font-size="10" fill="#34D399" text-anchor="middle">YouTube</text>
+    <rect x="300" y="768" width="60" height="22" rx="6" fill="#10B981" opacity="0.15"/>
+    <text x="330" y="784" font-family="DM Sans, sans-serif" font-size="10" fill="#34D399" text-anchor="middle">Twitter</text>
+
+    <rect x="640" y="690" width="340" height="110" rx="12" fill="#161F2A" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="660" y="720" font-family="DM Sans, sans-serif" font-size="12" fill="#8A9BB0">Último pedido</text>
+    <text x="660" y="748" font-family="DM Mono, monospace" font-size="11" fill="#34D399">10K Instagram Followers</text>
+    <text x="660" y="770" font-family="DM Sans, sans-serif" font-size="11" fill="#5E7085">@usuario_fit • Hace 2 min</text>
+    <rect x="880" y="755" width="80" height="28" rx="8" fill="#10B981" opacity="0.2"/>
+    <text x="920" y="774" font-family="DM Sans, sans-serif" font-size="11" fill="#34D399" text-anchor="middle">Activo</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1000" width="1080" height="80" fill="#0B1117" opacity="0.8"/>
+  <line x1="0" y1="1000" x2="1080" y2="1000" stroke="#10B981" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="60" y="1035" font-family="Syne, sans-serif" font-weight="700" font-size="16" fill="#F0F4F8">NEXA</text>
+  <text x="130" y="1035" font-family="DM Sans, sans-serif" font-size="14" fill="#5E7085">Tecnología que trasciende</text>
+  <text x="1020" y="1035" font-family="DM Sans, sans-serif" font-size="13" fill="#5E7085" text-anchor="end">nexapanel.com</text>
+</svg>

@@ -54,7 +54,30 @@ const sendOrderStatus = (user, order) =>
     `,
   });
 
-module.exports = { sendWelcome, sendOrderStatus };
+const sendVerificationEmail = (user, token) => {
+  const verifyUrl = `${env.FRONTEND_URL || 'http://localhost:5173'}/verify-email?token=${token}`;
+  return sendMail({
+    to: user.email,
+    subject: 'Verifica tu email — NexaPanel',
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto">
+        <h2>¡Hola, ${user.name}!</h2>
+        <p>Gracias por registrarte en <strong>NexaPanel</strong>.</p>
+        <p>Hacé clic en el siguiente botón para verificar tu email:</p>
+        <a href="${verifyUrl}"
+           style="display:inline-block;padding:12px 28px;margin:20px 0;border-radius:8px;
+                  background:#10B981;color:#000;text-decoration:none;font-weight:bold;">
+          Verificar email
+        </a>
+        <p style="color:#888;font-size:13px">O copiá este link en tu navegador:</p>
+        <p style="color:#888;font-size:12px;word-break:break-all">${verifyUrl}</p>
+        <p style="color:#888;font-size:13px">Si no creaste una cuenta, ignorá este mensaje.</p>
+      </div>
+    `,
+  });
+};
+
+module.exports = { sendWelcome, sendOrderStatus, sendVerificationEmail };
 
 
 

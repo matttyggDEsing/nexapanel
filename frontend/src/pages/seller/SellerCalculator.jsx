@@ -160,7 +160,7 @@ export default function SellerCalculator() {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm truncate font-medium" style={{ color: 'var(--txt)' }}>{selectedService.name}</p>
                   <p className="text-xs" style={{ color: 'var(--txt3)' }}>
-                    Costo: ${Number(selectedService.provider_rate || 0).toFixed(4)} / 1000
+                    Costo: ${Number(selectedService.provider_rate || 0).toFixed(4)}{selectedService.pricing_type === 'per_unit' ? ' / unidad' : ' / 1000'}
                   </p>
                 </div>
                 <button onClick={() => { setSelectedService(null); setCost('') }}
@@ -203,7 +203,7 @@ export default function SellerCalculator() {
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
                       <span className="text-sm truncate" style={{ color: 'var(--txt)' }}>{s.name}</span>
                       <span className="text-xs flex-shrink-0" style={{ color: 'var(--txt3)' }}>
-                        ${Number(s.provider_rate || 0).toFixed(4)}
+                        ${Number(s.provider_rate || 0).toFixed(4)}{s.pricing_type === 'per_unit' ? '/u' : '/1000'}
                       </span>
                     </button>
                   ))

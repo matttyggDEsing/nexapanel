@@ -30,14 +30,14 @@ const getActive = async ({ categoryId, search, limit = 50, offset = 0 } = {}) =>
 
   const dataSql = `
     SELECT s.id, s.provider_service_id, s.name, s.description,
-           s.rate, s.min_order, s.max_order, s.type, s.refill, s.cancel,
-           c.name AS category, c.slug AS category_slug, c.emoji AS category_emoji
-    FROM services s
-    JOIN categories c ON c.id = s.category_id
-    ${where}
-    ORDER BY c.sort_order ASC, s.sort_order ASC, s.name ASC
-    LIMIT ? OFFSET ?
-  `;
+    s.rate, s.pricing_type, s.min_order, s.max_order, s.type, s.refill, s.cancel,
+            c.name AS category, c.slug AS category_slug, c.emoji AS category_emoji
+     FROM services s
+     JOIN categories c ON c.id = s.category_id
+     ${where}
+     ORDER BY c.sort_order ASC, s.sort_order ASC, s.name ASC
+     LIMIT ? OFFSET ?
+   `;
 
   // FIX: pool.query() devuelve [rows, fields], por eso Promise.all resuelve en
   // [ [[{total:N}], fields], [[row,...], fields] ].
@@ -53,7 +53,7 @@ const getActive = async ({ categoryId, search, limit = 50, offset = 0 } = {}) =>
 const findAll = async ({ category } = {}) => {
   let sql = `
     SELECT s.id, s.provider_service_id, s.name, s.description,
-           s.rate, s.min_order, s.max_order, s.type, s.refill, s.cancel,
+           s.rate, s.pricing_type, s.min_order, s.max_order, s.type, s.refill, s.cancel,
            c.name AS category, c.slug AS category_slug
     FROM services s
     JOIN categories c ON c.id = s.category_id
@@ -112,7 +112,7 @@ const getAll = async ({ limit = 20, offset = 0, search = null, categoryId = null
 
   const [rows] = await pool.query(
     `SELECT s.id, s.provider_service_id, s.name, s.description,
-            s.rate, s.min_order, s.max_order, s.type,
+            s.rate, s.provider_rate, s.pricing_type, s.min_order, s.max_order, s.type,
             s.refill, s.cancel, s.is_active, s.seller_visible, s.sort_order,
             s.created_at, s.updated_at,
             c.name AS category_name, c.id AS category_id,
@@ -138,17 +138,19 @@ const create = async ({
   provider_id, category_id, provider_service_id = 0,
   name, description = '', rate, min_order, max_order,
   type = 'Default', refill = false, cancel = false,
+  pricing_type = 'per_1000',
 }) => {
   const [result] = await pool.query(
     `INSERT INTO services
        (provider_id, category_id, provider_service_id, name, description,
-        rate, min_order, max_order, type, refill, cancel, is_active)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`,
+        rate, min_order, max_order, type, refill, cancel, is_active, pricing_type)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`,
     [
       provider_id, category_id, provider_service_id,
       name, description, parseFloat(rate),
       parseInt(min_order), parseInt(max_order),
       type, refill ? 1 : 0, cancel ? 1 : 0,
+      pricing_type,
     ],
   );
   return result.insertId;
@@ -157,7 +159,7 @@ const create = async ({
 const update = async (id, data) => {
   const allowed = [
     'name', 'description', 'rate', 'min_order', 'max_order',
-    'type', 'is_active', 'seller_visible', 'category_id', 'refill', 'cancel', 'sort_order',
+    'type', 'is_active', 'seller_visible', 'pricing_type', 'category_id', 'refill', 'cancel', 'sort_order',
   ];
   const fields = [];
   const values = [];
@@ -236,6 +238,8 @@ const syncFromProvider = async (services, providerId) => {
       }
       const categoryId = cat?.id ?? fallbackCat.id;
 
+      const pricingType = (svcType === 'Package' || svcType === 'Custom Comments Package') ? 'per_unit' : 'per_1000';
+
       // Upsert servicio
       const [existing] = await conn.query(
         `SELECT id FROM services WHERE provider_service_id = ? AND provider_id = ? LIMIT 1`,
@@ -247,19 +251,21 @@ const syncFromProvider = async (services, providerId) => {
           `UPDATE services SET
              name = ?, description = ?, provider_rate = ?,
              min_order = ?, max_order = ?, type = ?,
-             refill = ?, cancel = ?, category_id = ?, updated_at = NOW()
+             refill = ?, cancel = ?, category_id = ?,
+             pricing_type = ?, updated_at = NOW()
            WHERE provider_service_id = ? AND provider_id = ?`,
           [svcName, svcDesc, rate, minOrd, maxOrd, svcType, svcRefill, svcCancel,
-           categoryId, providerServiceId, providerId],
+           categoryId, pricingType, providerServiceId, providerId],
         );
       } else {
         await conn.query(
           `INSERT INTO services
              (provider_id, category_id, provider_service_id, name, description,
-              rate, provider_rate, min_order, max_order, type, refill, cancel, is_active)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)`,
+              rate, provider_rate, min_order, max_order, type, refill, cancel,
+              is_active, pricing_type)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`,
           [providerId, categoryId, providerServiceId, svcName, svcDesc,
-           rate, rate, minOrd, maxOrd, svcType, svcRefill, svcCancel],
+           rate, rate, minOrd, maxOrd, svcType, svcRefill, svcCancel, pricingType],
         );
       }
       synced++;

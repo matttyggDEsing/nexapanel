@@ -84,9 +84,10 @@ const actionAdd = async (user, body) => {
     throw apiError(`La cantidad debe estar entre ${service.min_order} y ${service.max_order}`);
   }
 
-  const charge       = parseFloat(((service.rate / 1000) * quantity).toFixed(4));
+  const isPerUnit   = service.pricing_type === 'per_unit';
+  const charge       = parseFloat((isPerUnit ? service.rate * quantity : (service.rate / 1000) * quantity).toFixed(4));
   const providerRate = parseFloat(service.provider_rate || service.rate);
-  const cost         = parseFloat(((providerRate / 1000) * quantity).toFixed(4));
+  const cost         = parseFloat((isPerUnit ? providerRate * quantity : (providerRate / 1000) * quantity).toFixed(4));
 
   const conn = await pool.getConnection();
   let orderId;

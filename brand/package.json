@@ -1,0 +1,15 @@
+{
+  "name": "brand",
+  "version": "1.0.0",
+  "description": "> Todo lo que necesitás saber sobre la marca NEXA, en un solo lugar.",
+  "main": "download-fonts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}

@@ -5,3 +5,6 @@ logs/
 dist/
 .DS_Store
 .idea/
+.superpowers/
+*.zip
+*.ttf

@@ -6,7 +6,8 @@ const jwt = require('jsonwebtoken');
 const { pool } = require('../config/db');
 const userModel = require('../models/userModel');
 const { generateApiKey } = require('../utils/crypto');
-const { sendWelcome } = require('../services/mailer');
+const crypto = require('crypto');
+const { sendWelcome, sendVerificationEmail } = require('../services/mailer');
 const { successResponse, errorResponse } = require('../utils/response');
 const env = require('../config/env');
 
@@ -33,6 +34,10 @@ const register = async (req, res, next) => {
     const userId = await userModel.create({ name, email, password: hashedPassword, apiKey });
     const user = await userModel.findById(userId);
 
+    // Generar token de verificación y enviar email
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    await userModel.setVerificationToken(userId, verificationToken);
+    setImmediate(() => sendVerificationEmail({ ...user, api_key: apiKey }, verificationToken));
     setImmediate(() => sendWelcome({ ...user, api_key: apiKey }));
 
     const token = signToken(userId, 'user');
@@ -176,4 +181,34 @@ const updatePassword = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, me, updateProfile, updatePassword };
+const verifyEmail = async (req, res, next) => {
+  try {
+    const { token } = req.query;
+    if (!token) return errorResponse(res, 'Token requerido', 400);
+
+    const result = await userModel.verifyEmailToken(token);
+    if (!result) return errorResponse(res, 'Token inválido o expirado', 400);
+
+    if (result.alreadyVerified) {
+      return successResponse(res, null, 'El email ya estaba verificado');
+    }
+
+    return successResponse(res, null, 'Email verificado correctamente');
+  } catch (err) { next(err); }
+};
+
+const resendVerification = async (req, res, next) => {
+  try {
+    const user = await userModel.findById(req.user.id);
+    if (!user) return errorResponse(res, 'Usuario no encontrado', 404);
+    if (user.email_verified) return errorResponse(res, 'El email ya está verificado', 400);
+
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    await userModel.setVerificationToken(user.id, verificationToken);
+    setImmediate(() => sendVerificationEmail(user, verificationToken));
+
+    return successResponse(res, null, 'Email de verificación reenviado');
+  } catch (err) { next(err); }
+};
+
+module.exports = { register, login, me, updateProfile, updatePassword, verifyEmail, resendVerification };

@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, UserX, UserCheck, DollarSign, ChevronLeft, ChevronRight, X, RefreshCw } from 'lucide-react'
+import { Search, UserX, UserCheck, DollarSign, ChevronLeft, ChevronRight, X, RefreshCw, Trash2, Shield } from 'lucide-react'
 import toast from 'react-hot-toast'
 import api from '@/services/api'
+import { useConfirm } from '@/components/ui/ConfirmModal'
 
 function BalanceModal({ user, onClose, onSaved }) {
   const [amount, setAmount] = useState('')
@@ -80,6 +81,9 @@ export default function AdminUsers() {
   const [statusFilter, setStatusFilter] = useState('')
   const [pagination, setPagination] = useState({ page:1, totalPages:1, total:0 })
   const [balanceUser, setBalanceUser] = useState(null)
+  const [roleDropdown, setRoleDropdown] = useState(null)
+  const roleRef = useRef(null)
+  const { confirm, modal } = useConfirm()
 
   const fetchUsers = useCallback(async (params = {}) => {
     setLoading(true)
@@ -99,15 +103,50 @@ export default function AdminUsers() {
 
   useEffect(() => { fetchUsers() }, [pagination.page, search, statusFilter]) // eslint-disable-line
 
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (roleRef.current && !roleRef.current.contains(e.target)) setRoleDropdown(null)
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
   const handleSearch = (e) => {
     if (e.key === 'Enter') { setSearch(searchInput); setPagination(p => ({...p, page:1})) }
   }
 
   const toggleBan = async (user) => {
-    const action = user.status === 'banned' ? 'unban' : 'ban'
+    const newStatus = user.status === 'banned' ? 'active' : 'banned'
     try {
-      await api.post(`/admin/users/${user.id}/${action}`)
-      toast.success(action === 'ban' ? 'Usuario baneado' : 'Usuario desbaneado')
+      await api.patch(`/admin/users/${user.id}/status`, { status: newStatus })
+      toast.success(newStatus === 'banned' ? 'Usuario baneado' : 'Usuario desbaneado')
+      fetchUsers()
+    } catch {
+      // handled globally
+    }
+  }
+
+  const deleteUser = async (user) => {
+    const confirmed = await confirm(
+      'Eliminar usuario',
+      `¿Eliminar a "${user.name}" (${user.email})? Esta acción no se puede deshacer.`,
+      { confirmText: 'Eliminar', variant: 'danger' }
+    )
+    if (!confirmed) return
+    try {
+      await api.delete(`/admin/users/${user.id}`)
+      toast.success('Usuario eliminado')
+      fetchUsers()
+    } catch {
+      // handled globally
+    }
+  }
+
+  const changeRole = async (userId, role) => {
+    try {
+      await api.patch(`/admin/users/${userId}/role`, { role })
+      toast.success('Rol actualizado')
+      setRoleDropdown(null)
       fetchUsers()
     } catch {
       // handled globally
@@ -115,10 +154,13 @@ export default function AdminUsers() {
   }
 
   const ROLE_CFG = {
-    admin:   { label:'Admin',   bg:'rgba(139,92,246,0.12)', color:'#A78BFA' },
-    user:    { label:'Usuario', bg:'rgba(96,165,250,0.1)',  color:'#93C5FD' },
-    reseller:{ label:'Reseller',bg:'rgba(252,211,77,0.1)',  color:'#FCD34D' },
+    admin:   { label:'Admin',    bg:'rgba(139,92,246,0.12)', color:'#A78BFA' },
+    seller:  { label:'Vendedor', bg:'rgba(16,185,129,0.12)', color:'#34D399' },
+    staff:   { label:'Staff',    bg:'rgba(252,211,77,0.1)',  color:'#FCD34D' },
+    user:    { label:'Usuario',  bg:'rgba(96,165,250,0.1)',  color:'#93C5FD' },
   }
+
+  const ALL_ROLES = ['user', 'seller', 'staff', 'admin']
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
@@ -219,11 +261,36 @@ export default function AdminUsers() {
                       <td className="px-4 py-3.5 text-sm" style={{ color:'var(--txt2)' }}>
                         ${Number(user.total_spent ?? 0).toFixed(2)}
                       </td>
-                      <td className="px-4 py-3.5">
-                        <span className="text-xs px-2 py-0.5 rounded-md font-medium"
-                          style={{ background: ROLE_CFG[user.role]?.bg ?? 'var(--bg4)', color: ROLE_CFG[user.role]?.color ?? 'var(--txt3)' }}>
+                      <td className="px-4 py-3.5 relative">
+                        <button onClick={() => setRoleDropdown(roleDropdown === user.id ? null : user.id)}
+                          className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-md font-medium transition-all"
+                          style={{
+                            background: ROLE_CFG[user.role]?.bg ?? 'var(--bg4)',
+                            color: ROLE_CFG[user.role]?.color ?? 'var(--txt3)',
+                          }}>
                           {ROLE_CFG[user.role]?.label ?? user.role}
-                        </span>
+                          <Shield size={10} />
+                        </button>
+                        {roleDropdown === user.id && (
+                          <div ref={roleRef}
+                            className="absolute z-30 top-full left-0 mt-1 rounded-xl border shadow-xl overflow-hidden"
+                            style={{ background:'var(--bg2)', borderColor:'var(--border2)', minWidth:130 }}>
+                            {ALL_ROLES.map(r => (
+                              <button key={r} onClick={() => changeRole(user.id, r)}
+                                className="w-full flex items-center gap-2 px-3 py-2 text-xs text-left transition-all"
+                                style={{
+                                  color: r === user.role ? 'var(--em3)' : 'var(--txt)',
+                                  background: r === user.role ? 'rgba(16,185,129,0.06)' : 'transparent',
+                                }}
+                                onMouseEnter={e => e.currentTarget.style.background='var(--bg3)'}
+                                onMouseLeave={e => { if (r !== user.role) e.currentTarget.style.background='transparent' }}>
+                                <span className="w-1.5 h-1.5 rounded-full"
+                                  style={{ background: ROLE_CFG[r]?.color ?? 'var(--txt3)' }} />
+                                {ROLE_CFG[r]?.label ?? r}
+                              </button>
+                            ))}
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-3.5">
                         <span className={`badge ${user.status==='active' ? 'badge-active' : 'badge-cancelled'}`}>
@@ -248,6 +315,13 @@ export default function AdminUsers() {
                               border: `1px solid ${user.status==='active' ? 'rgba(239,68,68,0.15)' : 'rgba(16,185,129,0.15)'}`,
                             }}>
                             {user.status==='active' ? <UserX size={13}/> : <UserCheck size={13}/>}
+                          </button>
+                          <button onClick={() => deleteUser(user)} title="Eliminar usuario"
+                            className="p-1.5 rounded-lg transition-all"
+                            style={{ background:'rgba(239,68,68,0.08)', color:'#F87171', border:'1px solid rgba(239,68,68,0.15)' }}
+                            onMouseEnter={e => e.currentTarget.style.background='rgba(239,68,68,0.15)'}
+                            onMouseLeave={e => e.currentTarget.style.background='rgba(239,68,68,0.08)'}>
+                            <Trash2 size={13}/>
                           </button>
                         </div>
                       </td>
@@ -283,6 +357,7 @@ export default function AdminUsers() {
       {balanceUser && (
         <BalanceModal user={balanceUser} onClose={() => setBalanceUser(null)} onSaved={() => fetchUsers()}/>
       )}
+      {modal}
     </div>
   )
 }

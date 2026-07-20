@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <g id="icon-ig">
+      <rect x="-10" y="-10" width="20" height="20" rx="5" fill="none" stroke="#5E7085" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="5.2" fill="none" stroke="#5E7085" stroke-width="1.4"/>
+      <circle cx="6.2" cy="-6.2" r="1.4" fill="#5E7085"/>
+    </g>
+    <g id="icon-li">
+      <rect x="-10" y="-10" width="20" height="20" rx="3" fill="none" stroke="#5E7085" stroke-width="1.4"/>
+      <rect x="-5.6" y="-3.4" width="2.8" height="8" fill="#5E7085"/>
+      <circle cx="-4.2" cy="-6.3" r="2" fill="#5E7085"/>
+      <rect x="1.7" y="-3.4" width="2.8" height="8" fill="#5E7085"/>
+      <rect x="1.7" y="-5.2" width="2.8" height="2.8" fill="#5E7085"/>
+    </g>
+    <g id="icon-gh">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" fill="#5E7085" stroke="none"/>
+    </g>
+  </defs>
+  <rect x="0" y="0" width="600" height="200" fill="#060A0E"/>
+  <line x1="140" y1="35" x2="140" y2="165" stroke="#10B981" stroke-width="0.8" opacity="0.25"/>
+  <g transform="translate(75, 100)">
+    <g transform="scale(1.08)">
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </g>
+  </g>
+  <text x="165" y="62" font-family="Syne, sans-serif" font-size="28" font-weight="700" fill="#F0F4F8" letter-spacing="0.5">Aramis Rebai</text>
+  <text x="165" y="88" font-family="'DM Sans', sans-serif" font-size="15" font-weight="500" fill="#10B981" letter-spacing="1">FUNDADOR · DESARROLLADOR</text>
+  <line x1="165" y1="100" x2="420" y2="100" stroke="#10B981" stroke-width="0.5" opacity="0.3"/>
+  <g font-family="'DM Sans', sans-serif" font-size="12" fill="#8A9BB0">
+    <text x="165" y="120">T. +54 9 3435 085 737</text>
+  </g>
+  <g transform="translate(165, 160)">
+    <g transform="translate(0, 0)"><use href="#icon-ig" transform="scale(0.85)"/></g>
+    <g transform="translate(22, 0)"><use href="#icon-li" transform="scale(0.85)"/></g>
+    <g transform="translate(44, 0)"><use href="#icon-gh" transform="scale(0.85)"/></g>
+  </g>
+  <text x="232" y="167" font-family="'DM Sans', sans-serif" font-size="11" fill="#5E7085">@aramis.rebai</text>
+  <text x="380" y="167" font-family="Syne, sans-serif" font-size="14" font-weight="700" fill="#10B981" letter-spacing="2">NEXA</text>
+  <text x="440" y="167" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085">.design</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="emGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#6EE7B7" stop-opacity="0.03"/>
+    </linearGradient>
+    <filter id="glow5">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="#060A0E"/>
+
+  <!-- Glow orbs -->
+  <circle cx="200" cy="200" r="200" fill="#10B981" opacity="0.04" filter="url(#glow5)"/>
+  <circle cx="880" cy="800" r="250" fill="#34D399" opacity="0.03" filter="url(#glow5)"/>
+
+  <!-- Badge -->
+  <rect x="60" y="60" width="180" height="36" rx="18" fill="#10B981" opacity="0.15"/>
+  <text x="150" y="84" font-family="Syne, sans-serif" font-weight="700" font-size="13" fill="#34D399" text-anchor="middle" letter-spacing="0.1em">SOCIAL PROOF</text>
+
+  <!-- Isotipo -->
+  <g transform="translate(920, 55) scale(0.35)">
+    <polygon points="20,0 40,10 40,30 20,20" fill="#10B981" opacity="0.8"/>
+    <polygon points="40,10 60,0 60,20 40,30" fill="#34D399" opacity="0.6"/>
+    <polygon points="0,20 20,30 20,50 0,40" fill="#059669" opacity="0.7"/>
+    <polygon points="20,30 40,20 40,40 20,50" fill="#10B981" opacity="0.5"/>
+    <polygon points="40,20 60,10 60,30 40,40" fill="#6EE7B7" opacity="0.6"/>
+    <polygon points="60,20 80,10 80,30 60,40" fill="#34D399" opacity="0.4"/>
+  </g>
+
+  <!-- Title -->
+  <text x="60" y="160" font-family="Syne, sans-serif" font-weight="800" font-size="48" fill="#F0F4F8">Los números</text>
+  <text x="60" y="225" font-family="Syne, sans-serif" font-weight="800" font-size="48" fill="#34D399">hablan solos.</text>
+
+  <!-- Big stat -->
+  <text x="540" y="420" font-family="Syne, sans-serif" font-weight="800" font-size="140" fill="#10B981" opacity="0.12" text-anchor="middle">10K+</text>
+  <text x="540" y="470" font-family="DM Sans, sans-serif" font-size="20" fill="#8A9BB0" text-anchor="middle">pedidos procesados este mes</text>
+
+  <!-- Stats grid -->
+  <g transform="translate(60, 520)">
+    
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="220" height="100" rx="14" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="110" y="42" font-family="Syne, sans-serif" font-weight="800" font-size="32" fill="#34D399" text-anchor="middle">2.5M</text>
+        <text x="110" y="70" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="middle">Seguidores entregados</text>
+      </g>
+    
+      <g transform="translate(250, 0)">
+        <rect x="0" y="0" width="220" height="100" rx="14" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="110" y="42" font-family="Syne, sans-serif" font-weight="800" font-size="32" fill="#34D399" text-anchor="middle">99.7%</text>
+        <text x="110" y="70" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="middle">Tasa de entrega</text>
+      </g>
+    
+      <g transform="translate(500, 0)">
+        <rect x="0" y="0" width="220" height="100" rx="14" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="110" y="42" font-family="Syne, sans-serif" font-weight="800" font-size="32" fill="#34D399" text-anchor="middle">3min</text>
+        <text x="110" y="70" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="middle">Tiempo promedio</text>
+      </g>
+    
+      <g transform="translate(750, 0)">
+        <rect x="0" y="0" width="220" height="100" rx="14" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="110" y="42" font-family="Syne, sans-serif" font-weight="800" font-size="32" fill="#34D399" text-anchor="middle">4.9/5</text>
+        <text x="110" y="70" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="middle">Satisfacción</text>
+      </g>
+    
+  </g>
+
+  <!-- Testimonial -->
+  <g transform="translate(60, 660)">
+    <rect x="0" y="0" width="960" height="120" rx="14" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="120" rx="2" fill="#10B981" opacity="0.6"/>
+    <text x="40" y="35" font-family="Syne, sans-serif" font-weight="700" font-size="16" fill="#F0F4F8">"NexaPanel cambió cómo manejo mis redes."</text>
+    <text x="40" y="65" font-family="DM Sans, sans-serif" font-size="14" fill="#8A9BB0">— Usuario verificado, +50K seguidores entregados</text>
+    <g transform="translate(40, 80)">
+      <text x="0" y="0" font-size="16" fill="#34D399">★</text><text x="20" y="0" font-size="16" fill="#34D399">★</text><text x="40" y="0" font-size="16" fill="#34D399">★</text><text x="60" y="0" font-size="16" fill="#34D399">★</text><text x="80" y="0" font-size="16" fill="#34D399">★</text>
+    </g>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="1000" width="1080" height="80" fill="#0B1117" opacity="0.8"/>
+  <line x1="0" y1="1000" x2="1080" y2="1000" stroke="#10B981" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="60" y="1035" font-family="Syne, sans-serif" font-weight="700" font-size="16" fill="#F0F4F8">NEXA</text>
+  <text x="130" y="1035" font-family="DM Sans, sans-serif" font-size="14" fill="#5E7085">Tecnología que trasciende</text>
+  <text x="1020" y="1035" font-family="DM Sans, sans-serif" font-size="13" fill="#5E7085" text-anchor="end">nexapanel.com</text>
+</svg>

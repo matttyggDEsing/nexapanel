@@ -88,7 +88,9 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 // ── Inicio ─────────────────────────────────────────────────────────────────
-const start = async () => {
+const start = async (opts = {}) => {
+  const { skipListen = false, skipJobs = false } = opts;
+
   try {
     await testDB();
   } catch (err) {
@@ -101,18 +103,30 @@ const start = async () => {
     logger.warn('[Redis] Redis no disponible, el servidor igualmente arrancará:', err.message);
   }
 
-  orderProcessor.start();
-  balanceMonitor.start();
-  cryptoMonitor.start();
+  if (!skipJobs) {
+    orderProcessor.start();
+    balanceMonitor.start();
+    cryptoMonitor.start();
+  } else {
+    logger.info('[Vercel] Background jobs omitidos (serverless)');
+  }
 
-  app.listen(env.PORT, () => {
-    logger.info(`🚀 NexaPanel backend corriendo en puerto ${env.PORT} [${env.NODE_ENV}]`);
-  });
+  if (!skipListen) {
+    app.listen(env.PORT, () => {
+      logger.info(`NexaPanel backend corriendo en puerto ${env.PORT} [${env.NODE_ENV}]`);
+    });
+  }
 };
 
-start().catch((err) => {
-  logger.error('Error al iniciar el servidor:', err.message);
-  process.exit(1);
-});
+const isVercel = process.env.VERCEL === '1';
+
+if (isVercel) {
+  logger.info('[Vercel] Modo serverless — sin listen ni background jobs');
+} else {
+  start().catch((err) => {
+    logger.error('Error al iniciar el servidor:', err.message);
+    process.exit(1);
+  });
+}
 
 module.exports = app;

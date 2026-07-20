@@ -36,14 +36,16 @@ const createServiceSchema = Joi.object({
   cancel:              Joi.boolean().default(false),
 });
 const updateServiceSchema = Joi.object({
-  name:        Joi.string().min(2).max(500),
-  description: Joi.string().max(2000).allow(''),
-  rate:        Joi.number().positive(),
-  min_order:   Joi.number().integer().positive(),
-  max_order:   Joi.number().integer().positive(),
-  is_active:   Joi.number().valid(0, 1),
-  type:        Joi.string().max(100),
-  category_id: Joi.number().integer().positive(),
+  name:          Joi.string().min(2).max(500),
+  description:   Joi.string().max(2000).allow(''),
+  rate:          Joi.number().positive(),
+  min_order:     Joi.number().integer().positive(),
+  max_order:     Joi.number().integer().positive(),
+  is_active:     Joi.number().valid(0, 1),
+  type:          Joi.string().max(100),
+  category_id:   Joi.number().integer().positive(),
+  seller_visible: Joi.number().valid(0, 1),
+  pricing_type:  Joi.string().valid('per_1000', 'per_unit'),
 });
 const providerSchema = Joi.object({
   name:    Joi.string().min(2).max(100).required(),

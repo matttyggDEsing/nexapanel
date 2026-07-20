@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <rect width="1080" height="1920" fill="#060A0E"/>
+  <g opacity="0.015" stroke="#10B981" stroke-width="0.5" fill="none"><line x1="0" y1="0" x2="0" y2="1920"/><line x1="60" y1="0" x2="60" y2="1920"/><line x1="120" y1="0" x2="120" y2="1920"/><line x1="180" y1="0" x2="180" y2="1920"/><line x1="240" y1="0" x2="240" y2="1920"/><line x1="300" y1="0" x2="300" y2="1920"/><line x1="360" y1="0" x2="360" y2="1920"/><line x1="420" y1="0" x2="420" y2="1920"/><line x1="480" y1="0" x2="480" y2="1920"/><line x1="540" y1="0" x2="540" y2="1920"/><line x1="600" y1="0" x2="600" y2="1920"/><line x1="660" y1="0" x2="660" y2="1920"/><line x1="720" y1="0" x2="720" y2="1920"/><line x1="780" y1="0" x2="780" y2="1920"/><line x1="840" y1="0" x2="840" y2="1920"/><line x1="900" y1="0" x2="900" y2="1920"/><line x1="960" y1="0" x2="960" y2="1920"/><line x1="1020" y1="0" x2="1020" y2="1920"/><line x1="1080" y1="0" x2="1080" y2="1920"/><line x1="0" y1="0" x2="1080" y2="0"/><line x1="0" y1="60" x2="1080" y2="60"/><line x1="0" y1="120" x2="1080" y2="120"/><line x1="0" y1="180" x2="1080" y2="180"/><line x1="0" y1="240" x2="1080" y2="240"/><line x1="0" y1="300" x2="1080" y2="300"/><line x1="0" y1="360" x2="1080" y2="360"/><line x1="0" y1="420" x2="1080" y2="420"/><line x1="0" y1="480" x2="1080" y2="480"/><line x1="0" y1="540" x2="1080" y2="540"/><line x1="0" y1="600" x2="1080" y2="600"/><line x1="0" y1="660" x2="1080" y2="660"/><line x1="0" y1="720" x2="1080" y2="720"/><line x1="0" y1="780" x2="1080" y2="780"/><line x1="0" y1="840" x2="1080" y2="840"/><line x1="0" y1="900" x2="1080" y2="900"/><line x1="0" y1="960" x2="1080" y2="960"/><line x1="0" y1="1020" x2="1080" y2="1020"/><line x1="0" y1="1080" x2="1080" y2="1080"/><line x1="0" y1="1140" x2="1080" y2="1140"/><line x1="0" y1="1200" x2="1080" y2="1200"/><line x1="0" y1="1260" x2="1080" y2="1260"/><line x1="0" y1="1320" x2="1080" y2="1320"/><line x1="0" y1="1380" x2="1080" y2="1380"/><line x1="0" y1="1440" x2="1080" y2="1440"/><line x1="0" y1="1500" x2="1080" y2="1500"/><line x1="0" y1="1560" x2="1080" y2="1560"/><line x1="0" y1="1620" x2="1080" y2="1620"/><line x1="0" y1="1680" x2="1080" y2="1680"/><line x1="0" y1="1740" x2="1080" y2="1740"/><line x1="0" y1="1800" x2="1080" y2="1800"/><line x1="0" y1="1860" x2="1080" y2="1860"/><line x1="0" y1="1920" x2="1080" y2="1920"/></g>
+  <defs><filter id="g"><feGaussianBlur stdDeviation="35" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <circle cx="540" cy="350" r="280" fill="#10B981" opacity="0.04" filter="url(#g)"/>
+  <g>
+    <rect x="60" y="100" width="130.5" height="32" rx="16" fill="#10B981" opacity="0.12"/>
+    <text x="125.25" y="121" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#34D399" text-anchor="middle" letter-spacing="0.12em">SERVICIOS</text>
+  </g>
+  <g transform="translate(1000, 95) scale(0.35)"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#logoGrad)" opacity="0.85"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399" opacity="0.85"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669" opacity="0.85"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981" opacity="0.85"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669" opacity="0.85"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399" opacity="0.85"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669" opacity="0.85"/></g>
+
+  <text x="60" y="240" font-family="Syne, sans-serif" font-weight="800" font-size="52" fill="#F0F4F8" letter-spacing="-0.02em">Construimos</text>
+  <text x="60" y="318" font-family="Syne, sans-serif" font-weight="800" font-size="52" fill="#34D399" letter-spacing="-0.02em">lo que necesitás.</text>
+
+  <g>
+      <rect x="60" y="380" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="380" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="430" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">01</text>
+      <text x="150" y="428" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">Desarrollo Web</text>
+      <text x="150" y="462" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">React, Next.js, Vite. Fullstack moderno.</text>
+    </g><g>
+      <rect x="60" y="545" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="545" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="595" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">02</text>
+      <text x="150" y="593" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">Apps Móviles</text>
+      <text x="150" y="627" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">React Native, Flutter. iOS y Android.</text>
+    </g><g>
+      <rect x="60" y="710" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="710" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="760" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">03</text>
+      <text x="150" y="758" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">Software a Medida</text>
+      <text x="150" y="792" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">ERP, CRM, SaaS. Escalable y robusto.</text>
+    </g><g>
+      <rect x="60" y="875" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="875" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="925" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">04</text>
+      <text x="150" y="923" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">APIs &amp; Backend</text>
+      <text x="150" y="957" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">Node, Go, Python. Microservicios.</text>
+    </g><g>
+      <rect x="60" y="1040" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="1040" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="1090" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">05</text>
+      <text x="150" y="1088" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">UI/UX Design</text>
+      <text x="150" y="1122" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">Interfaces que se sienten premium.</text>
+    </g><g>
+      <rect x="60" y="1205" width="960" height="140" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="60" y="1205" width="3" height="140" rx="1.5" fill="#10B981" opacity="0.5"/>
+      <text x="100" y="1255" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#10B981" opacity="0.2">06</text>
+      <text x="150" y="1253" font-family="Syne, sans-serif" font-weight="700" font-size="22" fill="#F0F4F8">DevOps &amp; Cloud</text>
+      <text x="150" y="1287" font-family="DM Sans, sans-serif" font-weight="400" font-size="15" fill="#8A9BB0">AWS, Docker, CI/CD automatizado.</text>
+    </g>
+
+  <g>
+    <rect x="0" y="1848" width="1080" height="72" fill="#0B1117" opacity="0.85"/>
+    <line x1="0" y1="1848" x2="1080" y2="1848" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <g transform="translate(60, 1872)">
+      <g transform="translate(0, -17.1) scale(0.38)"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#logoGrad)" opacity="0.85"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399" opacity="0.85"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669" opacity="0.85"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981" opacity="0.85"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669" opacity="0.85"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399" opacity="0.85"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669" opacity="0.85"/></g>
+      <text x="40.4" y="6" font-family="Syne, sans-serif" font-weight="800" font-size="15" fill="#F0F4F8" letter-spacing="2">NEXA</text>
+      <text x="105.4" y="6" font-family="DM Sans, sans-serif" font-weight="400" font-size="12" fill="#5E7085" letter-spacing="0.5">Tecnología que trasciende</text>
+    </g>
+    <text x="1020" y="1878" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="end" letter-spacing="0.5">nexa.design</text>
+  </g>
+</svg>

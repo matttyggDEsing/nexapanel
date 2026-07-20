@@ -13,7 +13,8 @@ import SellerLayout, { SellerRoute } from '@/components/layout/SellerLayout'
 const LandingPage     = lazy(() => import('@/pages/LandingPage'))
 const LoginPage       = lazy(() => import('@/pages/LoginPage'))
 const RegisterPage    = lazy(() => import('@/pages/RegisterPage'))
-const MaintenancePage = lazy(() => import('@/pages/MaintenancePage'))
+const MaintenancePage  = lazy(() => import('@/pages/MaintenancePage'))
+const VerifyEmailPage  = lazy(() => import('@/pages/VerifyEmailPage'))
 
 // ── Dashboard pages ───────────────────────────────────────────────────────────
 const DashboardHome = lazy(() => import('@/pages/dashboard/DashboardHome'))
@@ -96,9 +97,10 @@ export default function App() {
         </Route>
 
         {/* Auth */}
-        <Route path="/login"       element={<GuestRoute><LoginPage /></GuestRoute>} />
-        <Route path="/register"    element={<GuestRoute><RegisterPage /></GuestRoute>} />
-        <Route path="/maintenance" element={<MaintenancePage />} />
+        <Route path="/login"        element={<GuestRoute><LoginPage /></GuestRoute>} />
+        <Route path="/register"     element={<GuestRoute><RegisterPage /></GuestRoute>} />
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
+        <Route path="/maintenance"  element={<MaintenancePage />} />
 
         {/* Dashboard (usuarios) */}
         <Route path="/dashboard" element={<PrivateRoute><DashboardLayout /></PrivateRoute>}>

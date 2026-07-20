@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="600" viewBox="0 0 1920 600">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060A0E"/>
+      <stop offset="40%" stop-color="#0C151E"/>
+      <stop offset="100%" stop-color="#060A0E"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1920" height="600" fill="url(#bg-grad)"/>
+  <!-- Líneas decorativas verticales sutiles -->
+  <g stroke="#10B981" stroke-width="0.5" opacity="0.04">
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="800" y1="0" x2="800" y2="600"/>
+    <line x1="1000" y1="0" x2="1000" y2="600"/>
+    <line x1="1200" y1="0" x2="1200" y2="600"/>
+    <line x1="1400" y1="0" x2="1400" y2="600"/>
+    <line x1="1600" y1="0" x2="1600" y2="600"/>
+    <line x1="1800" y1="0" x2="1800" y2="600"/>
+  </g>
+  <!-- Líneas topográficas -->
+  <g fill="none" stroke-linecap="round" opacity="0.05">
+    <path d="M-100,100 C300,150 600,-50 960,60 C1320,170 1620,30 2020,100" stroke="#10B981" stroke-width="2"/>
+    <path d="M-100,180 C300,230 600,30 960,140 C1320,250 1620,110 2020,180" stroke="#34D399" stroke-width="2"/>
+    <path d="M-100,260 C300,310 600,110 960,220 C1320,330 1620,190 2020,260" stroke="#059669" stroke-width="2"/>
+    <path d="M-100,340 C300,390 600,190 960,300 C1320,410 1620,270 2020,340" stroke="#10B981" stroke-width="2"/>
+    <path d="M-100,420 C300,470 600,270 960,380 C1320,490 1620,350 2020,420" stroke="#34D399" stroke-width="2"/>
+    <path d="M-100,500 C300,550 600,350 960,460 C1320,570 1620,430 2020,500" stroke="#10B981" stroke-width="2"/>
+  </g>
+  <!-- Contenido: isotipo izquierda, texto derecha -->
+  <g transform="translate(350, 240)">
+    <g transform="scale(3.5)">
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </g>
+  </g>
+  <g transform="translate(620, 230)">
+    <text x="0" y="0" font-family="Syne, sans-serif" font-size="80" font-weight="800" fill="#F0F4F8" letter-spacing="6">NEXA</text>
+    <text x="0" y="50" font-family="'DM Sans', sans-serif" font-size="28" font-weight="400" fill="#10B981" letter-spacing="4">Tecnología que trasciende</text>
+    <line x1="0" y1="70" x2="400" y2="70" stroke="#10B981" stroke-width="1" opacity="0.3"/>
+    <g font-family="'DM Sans', sans-serif" font-size="18" fill="#8A9BB0">
+      <text x="0" y="100">Diseño de Software · Desarrollo Web</text>
+      <text x="0" y="128">Programación y Apps a Medida</text>
+    </g>
+  </g>
+</svg>

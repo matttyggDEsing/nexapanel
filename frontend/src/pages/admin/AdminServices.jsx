@@ -231,7 +231,7 @@ export default function AdminServices() {
           <table className="w-full">
             <thead>
               <tr style={{ borderBottom:'1px solid var(--border2)', background:'var(--bg3)' }}>
-                {['ID','Nombre','Categoría','Proveedor','Costo/1K','Precio/1K','Ganancia','Min','Max','Activo','Vendedor'].map(h => (
+                {['ID','Nombre','Categoría','Proveedor','Costo/1K','Precio/1K','Ganancia','Min','Max','Tipo','Activo','Vendedor'].map(h => (
                   <th key={h} className="text-left px-4 py-3 text-xs font-medium uppercase tracking-wider"
                     style={{ color:'var(--txt3)' }}>{h}</th>
                 ))}
@@ -250,7 +250,7 @@ export default function AdminServices() {
                 ))
               ) : services.length === 0 ? (
                 <tr>
-                  <td colSpan={10} className="text-center py-16" style={{ color:'var(--txt3)' }}>
+                  <td colSpan={12} className="text-center py-16" style={{ color:'var(--txt3)' }}>
                     <p className="text-sm">No se encontraron servicios</p>
                   </td>
                 </tr>
@@ -259,7 +259,7 @@ export default function AdminServices() {
                   {services.map((s, i) => {
                     const cost  = Number(s.provider_rate > 0 ? s.provider_rate : null)
                     const price = Number(s.rate)
-                    const profit = price > 0 && cost > 0 ? (((price - cost) / cost) * 100).toFixed(0) : null
+                    const profit = price > 0 && cost > 0 ? (((price - cost) / cost) * 100) : null
 
                     return (
                       <motion.tr key={s.id}
@@ -296,6 +296,15 @@ export default function AdminServices() {
                         </td>
                         <td className="px-4 py-3 text-xs" style={{ color:'var(--txt2)' }}>
                           {Number(s.max_order).toLocaleString()}
+                        </td>
+                        <td className="px-4 py-3 text-xs">
+                          <span className="px-2 py-0.5 rounded-lg font-medium"
+                            style={{
+                              background: s.pricing_type === 'per_unit' ? 'rgba(251,191,36,0.12)' : 'rgba(96,165,250,0.12)',
+                              color: s.pricing_type === 'per_unit' ? '#FBBF24' : '#60A5FA',
+                            }}>
+                            {s.pricing_type === 'per_unit' ? 'Unidad' : 'x1000'}
+                          </span>
                         </td>
                         <td className="px-4 py-3">
                           <button onClick={() => toggleActive(s)}

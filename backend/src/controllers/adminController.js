@@ -487,8 +487,8 @@ const deleteUser = async (req, res, next) => {
 const updateUserRole = async (req, res, next) => {
   try {
     const { role } = req.body;
-    if (!['user', 'staff', 'admin'].includes(role)) {
-      return errorResponse(res, 'Rol inválido. Usa: user, staff, admin', 400);
+    if (!['user', 'staff', 'admin', 'seller'].includes(role)) {
+      return errorResponse(res, 'Rol inválido. Usa: user, staff, admin, seller', 400);
     }
     const targetId = parseInt(req.params.id);
     if (targetId === req.user.id) {

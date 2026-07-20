@@ -100,11 +100,12 @@ const createSale = async (req, res, next) => {
     let total = 0;
     const enrichedItems = [];
     for (const item of items) {
-      const [[svc]] = await conn.query('SELECT id, rate FROM services WHERE id = ? AND is_active = 1', [item.service_id]);
+      const [[svc]] = await conn.query('SELECT id, rate, pricing_type FROM services WHERE id = ? AND is_active = 1', [item.service_id]);
       if (!svc) throw new Error(`Servicio ${item.service_id} no encontrado o inactivo`);
       const qty      = parseInt(item.quantity) || 1;
       const price    = parseFloat(item.unit_price) || parseFloat(svc.rate);
-      const subtotal = (qty / 1000) * price;
+      const isPerUnit = svc.pricing_type === 'per_unit';
+      const subtotal = isPerUnit ? qty * price : (qty / 1000) * price;
       total += subtotal;
       enrichedItems.push({ service_id: svc.id, quantity: qty, unit_price: price, subtotal, link: item.link || null });
     }

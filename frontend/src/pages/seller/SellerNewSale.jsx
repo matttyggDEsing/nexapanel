@@ -310,12 +310,15 @@ function StepServices({ cart, onCartChange }) {
   useEffect(() => { setPage(1) }, [debounced, categoryId])
   useEffect(() => { loadServices() }, [loadServices])
 
+  const calcSubtotal = (qty, price, pricingType) =>
+    pricingType === 'per_unit' ? qty * price : (qty / 1000) * price
+
   const addToCart = (svc) => {
     onCartChange(prev => {
       const existing = prev.find(i => i.service_id === svc.id)
       if (existing) {
         return prev.map(i => i.service_id === svc.id
-          ? { ...i, quantity: i.quantity + 1, subtotal: ((i.quantity + 1) / 1000) * i.unit_price }
+          ? { ...i, quantity: i.quantity + 1, subtotal: calcSubtotal(i.quantity + 1, i.unit_price, i.pricing_type) }
           : i
         )
       }
@@ -323,8 +326,9 @@ function StepServices({ cart, onCartChange }) {
         service_id: svc.id,
         service_name: svc.name,
         unit_price: parseFloat(svc.rate || 0),
+        pricing_type: svc.pricing_type || 'per_1000',
         quantity: 1,
-        subtotal: (1 / 1000) * parseFloat(svc.rate || 0),
+        subtotal: calcSubtotal(1, parseFloat(svc.rate || 0), svc.pricing_type || 'per_1000'),
       }]
     })
   }
@@ -336,7 +340,7 @@ function StepServices({ cart, onCartChange }) {
     }
     onCartChange(prev => prev.map(i =>
       i.service_id === service_id
-        ? { ...i, quantity: qty, subtotal: (qty / 1000) * i.unit_price }
+        ? { ...i, quantity: qty, subtotal: calcSubtotal(qty, i.unit_price, i.pricing_type) }
         : i
     ))
   }
@@ -345,7 +349,7 @@ function StepServices({ cart, onCartChange }) {
     const p = parseFloat(price) || 0
     onCartChange(prev => prev.map(i =>
       i.service_id === service_id
-        ? { ...i, unit_price: p, subtotal: (i.quantity / 1000) * p }
+        ? { ...i, unit_price: p, subtotal: calcSubtotal(i.quantity, p, i.pricing_type) }
         : i
     ))
   }
@@ -398,7 +402,7 @@ function StepServices({ cart, onCartChange }) {
                     style={{ borderBottom: i < services.length - 1 ? '1px solid var(--border2)' : 'none' }}>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs truncate font-medium" style={{ color: 'var(--txt)' }}>{svc.name}</p>
-                      <p className="text-xs" style={{ color: 'var(--em3)' }}>{fmtMoney(svc.rate)} / 1000</p>
+                      <p className="text-xs" style={{ color: 'var(--em3)' }}>{fmtMoney(svc.rate)}{svc.pricing_type === 'per_unit' ? ' / unidad' : ' / 1000'}</p>
                     </div>
                     <button
                       onClick={() => addToCart(svc)}
@@ -639,7 +643,7 @@ function StepSummary({ customer, cart, method, notes, file }) {
             {cart.map(item => (
               <div key={item.service_id} className="flex items-center justify-between text-sm">
                 <span className="truncate flex-1 mr-2" style={{ color: 'var(--txt)' }}>{item.service_name}</span>
-                <span style={{ color: 'var(--txt3)' }}>{item.quantity} × {fmtMoney(item.unit_price)}</span>
+                <span style={{ color: 'var(--txt3)' }}>{item.quantity} × {fmtMoney(item.unit_price)}{item.pricing_type === 'per_unit' ? '/u' : ''}</span>
                 <span className="ml-2 font-semibold" style={{ color: 'var(--em3)' }}>{fmtMoney(item.subtotal)}</span>
               </div>
             ))}

@@ -137,7 +137,8 @@ const createOrder = async (req, res, next) => {
       );
     }
 
-    const charge = parseFloat(((service.rate / 1000) * quantity).toFixed(4));
+    const isPerUnit = service.pricing_type === 'per_unit';
+    const charge = parseFloat((isPerUnit ? service.rate * quantity : (service.rate / 1000) * quantity).toFixed(4));
 
     // FIX: provider_rate puede no existir si la migración migration_provider_rate.sql
     // no fue ejecutada todavía. En ese caso caemos a rate (precio usuario) como costo,
@@ -147,7 +148,7 @@ const createOrder = async (req, res, next) => {
     const providerRate    = (!isNaN(rawProviderRate) && rawProviderRate > 0)
       ? rawProviderRate
       : parseFloat(service.rate);
-    const cost = parseFloat(((providerRate / 1000) * quantity).toFixed(4));
+    const cost = parseFloat((isPerUnit ? providerRate * quantity : (providerRate / 1000) * quantity).toFixed(4));
 
     await conn.beginTransaction();
 

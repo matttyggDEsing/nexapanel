@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="-40 -40 80 90">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+  <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+  <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+  <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+  <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+  <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+  <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+</svg>

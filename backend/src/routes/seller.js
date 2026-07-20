@@ -118,13 +118,14 @@ router.post('/bulk-orders', async (req, res, next) => {
 
         // Obtener precio del servicio
         const [[svc]] = await conn.query(
-          'SELECT id, rate FROM services WHERE id = ? AND is_active = 1 LIMIT 1',
+          'SELECT id, rate, pricing_type FROM services WHERE id = ? AND is_active = 1 LIMIT 1',
           [service_id]
         );
         if (!svc) continue;
 
         const unit_price = parseFloat(svc.rate);
-        const subtotal   = (parseInt(quantity) / 1000) * unit_price;
+        const isPerUnit  = svc.pricing_type === 'per_unit';
+        const subtotal   = isPerUnit ? parseInt(quantity) * unit_price : (parseInt(quantity) / 1000) * unit_price;
 
         // Crear venta individual por cada ítem
         const [saleRes] = await conn.query(
@@ -234,7 +235,7 @@ router.get('/services', async (req, res, next) => {
       `SELECT COUNT(*) AS total FROM services s ${where}`, params
     );
     const [rows] = await pool.query(
-      `SELECT s.id, s.name, s.rate, s.provider_rate, s.min_order, s.max_order, s.type,
+      `SELECT s.id, s.name, s.rate, s.provider_rate, s.pricing_type, s.min_order, s.max_order, s.type,
               c.name AS category_name, c.id AS category_id
        FROM services s
        JOIN categories c ON c.id = s.category_id

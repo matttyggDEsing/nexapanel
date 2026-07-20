@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#060A0E"/>
+  <g opacity="0.02" stroke="#10B981" stroke-width="0.5" fill="none"><line x1="0" y1="0" x2="0" y2="1080"/><line x1="60" y1="0" x2="60" y2="1080"/><line x1="120" y1="0" x2="120" y2="1080"/><line x1="180" y1="0" x2="180" y2="1080"/><line x1="240" y1="0" x2="240" y2="1080"/><line x1="300" y1="0" x2="300" y2="1080"/><line x1="360" y1="0" x2="360" y2="1080"/><line x1="420" y1="0" x2="420" y2="1080"/><line x1="480" y1="0" x2="480" y2="1080"/><line x1="540" y1="0" x2="540" y2="1080"/><line x1="600" y1="0" x2="600" y2="1080"/><line x1="660" y1="0" x2="660" y2="1080"/><line x1="720" y1="0" x2="720" y2="1080"/><line x1="780" y1="0" x2="780" y2="1080"/><line x1="840" y1="0" x2="840" y2="1080"/><line x1="900" y1="0" x2="900" y2="1080"/><line x1="960" y1="0" x2="960" y2="1080"/><line x1="1020" y1="0" x2="1020" y2="1080"/><line x1="1080" y1="0" x2="1080" y2="1080"/><line x1="0" y1="0" x2="1080" y2="0"/><line x1="0" y1="60" x2="1080" y2="60"/><line x1="0" y1="120" x2="1080" y2="120"/><line x1="0" y1="180" x2="1080" y2="180"/><line x1="0" y1="240" x2="1080" y2="240"/><line x1="0" y1="300" x2="1080" y2="300"/><line x1="0" y1="360" x2="1080" y2="360"/><line x1="0" y1="420" x2="1080" y2="420"/><line x1="0" y1="480" x2="1080" y2="480"/><line x1="0" y1="540" x2="1080" y2="540"/><line x1="0" y1="600" x2="1080" y2="600"/><line x1="0" y1="660" x2="1080" y2="660"/><line x1="0" y1="720" x2="1080" y2="720"/><line x1="0" y1="780" x2="1080" y2="780"/><line x1="0" y1="840" x2="1080" y2="840"/><line x1="0" y1="900" x2="1080" y2="900"/><line x1="0" y1="960" x2="1080" y2="960"/><line x1="0" y1="1020" x2="1080" y2="1020"/><line x1="0" y1="1080" x2="1080" y2="1080"/></g>
+  <defs><filter id="g"><feGaussianBlur stdDeviation="22.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <circle cx="200" cy="180" r="180" fill="#10B981" opacity="0.04" filter="url(#g)"/>
+  <defs><filter id="g2"><feGaussianBlur stdDeviation="27.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <circle cx="880" cy="800" r="220" fill="#34D399" opacity="0.03" filter="url(#g2)"/>
+  <g>
+    <rect x="60" y="60" width="162" height="32" rx="16" fill="#10B981" opacity="0.12"/>
+    <text x="141" y="81" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#34D399" text-anchor="middle" letter-spacing="0.12em">SOCIAL PROOF</text>
+  </g>
+  <g transform="translate(1000, 52) scale(0.35)"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#logoGrad)" opacity="0.85"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399" opacity="0.85"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669" opacity="0.85"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981" opacity="0.85"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669" opacity="0.85"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399" opacity="0.85"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669" opacity="0.85"/></g>
+
+  <text x="60" y="140" font-family="Syne, sans-serif" font-weight="800" font-size="48" fill="#F0F4F8" letter-spacing="-0.02em">Nuestro</text>
+  <text x="60" y="208" font-family="Syne, sans-serif" font-weight="800" font-size="48" fill="#34D399" letter-spacing="-0.02em">trabajo habla.</text>
+
+  <text x="540" y="380" font-family="Syne, sans-serif" font-weight="800" font-size="120" fill="#10B981" opacity="0.08" text-anchor="middle" letter-spacing="-0.03em">30+</text>
+  <text x="540" y="430" font-family="DM Sans, sans-serif" font-weight="400" font-size="17" fill="#8A9BB0" text-anchor="middle">proyectos entregados</text>
+
+  <g transform="translate(60, 470)">
+    
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="230" height="85" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="115" y="38" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#34D399" text-anchor="middle">100%</text>
+        <text x="115" y="62" font-family="DM Sans, sans-serif" font-weight="400" font-size="11" fill="#5E7085" text-anchor="middle">Proyectos a tiempo</text>
+      </g>
+    
+      <g transform="translate(250, 0)">
+        <rect x="0" y="0" width="230" height="85" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="115" y="38" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#34D399" text-anchor="middle">0</text>
+        <text x="115" y="62" font-family="DM Sans, sans-serif" font-weight="400" font-size="11" fill="#5E7085" text-anchor="middle">Proyectos abandonados</text>
+      </g>
+    
+      <g transform="translate(500, 0)">
+        <rect x="0" y="0" width="230" height="85" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="115" y="38" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#34D399" text-anchor="middle">&lt;24h</text>
+        <text x="115" y="62" font-family="DM Sans, sans-serif" font-weight="400" font-size="11" fill="#5E7085" text-anchor="middle">Tiempo de respuesta</text>
+      </g>
+    
+      <g transform="translate(750, 0)">
+        <rect x="0" y="0" width="230" height="85" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+        <text x="115" y="38" font-family="Syne, sans-serif" font-weight="800" font-size="26" fill="#34D399" text-anchor="middle">5/5</text>
+        <text x="115" y="62" font-family="DM Sans, sans-serif" font-weight="400" font-size="11" fill="#5E7085" text-anchor="middle">Satisfacción</text>
+      </g>
+    
+  </g>
+
+  <g transform="translate(60, 590)">
+    <rect x="0" y="0" width="960" height="120" rx="12" fill="#0B1117" stroke="#10B981" stroke-opacity="0.08" stroke-width="1"/>
+    <rect x="0" y="0" width="3" height="120" rx="1.5" fill="#10B981" opacity="0.5"/>
+    <text x="36" y="35" font-family="Syne, sans-serif" font-weight="700" font-size="15" fill="#F0F4F8">"NEXA entregó exactamente lo que necesitábamos."</text>
+    <text x="36" y="60" font-family="DM Sans, sans-serif" font-weight="400" font-size="13" fill="#8A9BB0">— Cliente verificado, plataforma SaaS</text>
+    <g transform="translate(36, 78)">
+      <text x="0" y="0" font-size="16" fill="#34D399">★</text><text x="20" y="0" font-size="16" fill="#34D399">★</text><text x="40" y="0" font-size="16" fill="#34D399">★</text><text x="60" y="0" font-size="16" fill="#34D399">★</text><text x="80" y="0" font-size="16" fill="#34D399">★</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="0" y="1008" width="1080" height="72" fill="#0B1117" opacity="0.85"/>
+    <line x1="0" y1="1008" x2="1080" y2="1008" stroke="#10B981" stroke-opacity="0.1" stroke-width="1"/>
+    <g transform="translate(60, 1032)">
+      <g transform="translate(0, -17.1) scale(0.38)"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#logoGrad)" opacity="0.85"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399" opacity="0.85"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669" opacity="0.85"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981" opacity="0.85"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669" opacity="0.85"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399" opacity="0.85"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669" opacity="0.85"/></g>
+      <text x="40.4" y="6" font-family="Syne, sans-serif" font-weight="800" font-size="15" fill="#F0F4F8" letter-spacing="2">NEXA</text>
+      <text x="105.4" y="6" font-family="DM Sans, sans-serif" font-weight="400" font-size="12" fill="#5E7085" letter-spacing="0.5">Tecnología que trasciende</text>
+    </g>
+    <text x="1020" y="1038" font-family="DM Sans, sans-serif" font-size="12" fill="#5E7085" text-anchor="end" letter-spacing="0.5">nexa.design</text>
+  </g>
+</svg>

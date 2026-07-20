@@ -31,6 +31,8 @@ router.post('/login',    login,    validate(loginSchema),    authController.logi
 router.get('/me', auth, authController.me);
 router.patch('/profile',  auth, validate(profileSchema), authController.updateProfile);
 router.patch('/password', auth, validate(passwordSchema), authController.updatePassword);
+router.get('/verify-email', authController.verifyEmail);
+router.post('/resend-verification', auth, authController.resendVerification);
 
 module.exports = router;
 

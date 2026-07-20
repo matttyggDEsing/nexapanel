@@ -65,7 +65,7 @@ const update = async (id, data) => {
  * @param {'user'|'staff'|'admin'} role
  */
 const updateRole = async (id, role) => {
-  const VALID_ROLES = ['user', 'staff', 'admin'];
+  const VALID_ROLES = ['user', 'staff', 'admin', 'seller'];
   if (!VALID_ROLES.includes(role)) {
     throw new Error(`Rol inválido: ${role}. Valores permitidos: ${VALID_ROLES.join(', ')}`);
   }
@@ -143,16 +143,41 @@ const findAll = async ({ limit = 20, offset = 0, search = null, status = null } 
   return { rows, total };
 };
 
+const setVerificationToken = async (userId, token) => {
+  await pool.query(
+    `UPDATE users SET email_verification_token = ?, updated_at = NOW() WHERE id = ?`,
+    [token, userId],
+  );
+};
+
+const verifyEmailToken = async (token) => {
+  const [rows] = await pool.query(
+    `SELECT id, email, email_verified FROM users WHERE email_verification_token = ? LIMIT 1`,
+    [token],
+  );
+  const user = rows[0];
+  if (!user) return null;
+  if (user.email_verified) return { alreadyVerified: true, user };
+
+  await pool.query(
+    `UPDATE users SET email_verified = 1, email_verification_token = NULL, updated_at = NOW() WHERE id = ?`,
+    [user.id],
+  );
+  return { alreadyVerified: false, user };
+};
+
 module.exports = {
   findById,
   findByEmail,
   findByApiKey,
   create,
   update,
-  updateRole,    // ← nuevo
-  updateStatus,  // ← nuevo
+  updateRole,
+  updateStatus,
   adjustBalance,
   findAll,
+  setVerificationToken,
+  verifyEmailToken,
 };
 
 

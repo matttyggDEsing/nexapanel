@@ -157,7 +157,7 @@ function ServicePicker({ row, onChange }) {
                 onMouseEnter={e => e.currentTarget.style.background = 'var(--bg4)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
                 <span className="text-sm truncate" style={{ color: 'var(--txt)' }}>{s.name}</span>
-                <span className="text-xs flex-shrink-0" style={{ color: 'var(--em3)' }}>${Number(s.rate).toFixed(4)} / 1000</span>
+                <span className="text-xs flex-shrink-0" style={{ color: 'var(--em3)' }}>${Number(s.rate).toFixed(4)}{s.pricing_type === 'per_unit' ? '/u' : '/1000'}</span>
               </button>
             ))
           )}
@@ -180,7 +180,9 @@ export default function SellerBulkOrders() {
   const removeRow = (id) => setRows(prev => prev.length > 1 ? prev.filter(r => r._id !== id) : prev)
 
   const validRows = rows.filter(r => r.service_id && parseInt(r.quantity) > 0)
-  const total = validRows.reduce((sum, r) => sum + ((parseInt(r.quantity || 0) / 1000) * Number(r.service?.rate || 0)), 0)
+  const calcSubtotal = (qty, rate, pricingType) =>
+    pricingType === 'per_unit' ? qty * rate : (qty / 1000) * rate
+  const total = validRows.reduce((sum, r) => sum + calcSubtotal(parseInt(r.quantity || 0), Number(r.service?.rate || 0), r.service?.pricing_type || 'per_1000'), 0)
 
   const isValid = customer && validRows.length > 0
 
@@ -243,7 +245,8 @@ export default function SellerBulkOrders() {
           <div className="space-y-2.5">
             <AnimatePresence initial={false}>
               {rows.map((row) => {
-                const subtotal = row.service && row.quantity ? (parseInt(row.quantity || 0) / 1000) * Number(row.service.rate) : 0
+                const calcSubtotal = (qty, rate, pt) => pt === 'per_unit' ? qty * rate : (qty / 1000) * rate
+                const subtotal = row.service && row.quantity ? calcSubtotal(parseInt(row.quantity || 0), Number(row.service.rate), row.service.pricing_type || 'per_1000') : 0
                 return (
                   <motion.div key={row._id} layout
                     initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}

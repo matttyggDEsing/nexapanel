@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="banner-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#060A0E"/>
+      <stop offset="70%" stop-color="#0A1118"/>
+      <stop offset="100%" stop-color="#060A0E"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1584" height="396" fill="url(#banner-bg)"/>
+  <!-- Líneas decorativas topográficas -->
+  <g fill="none" stroke-linecap="round" opacity="0.06">
+    <path d="M-50,40 C80,80 200,-20 400,50 C600,120 800,0 1000,60 C1200,120 1400,30 1634,80" stroke="#10B981" stroke-width="1.5"/>
+    <path d="M-50,80 C80,120 200,20 400,90 C600,160 800,40 1000,100 C1200,160 1400,70 1634,120" stroke="#34D399" stroke-width="1.5"/>
+    <path d="M-50,120 C80,160 200,60 400,130 C600,200 800,80 1000,140 C1200,200 1400,110 1634,160" stroke="#059669" stroke-width="1.5"/>
+    <path d="M-50,160 C80,200 200,100 400,170 C600,240 800,120 1000,180 C1200,240 1400,150 1634,200" stroke="#10B981" stroke-width="1.5"/>
+    <path d="M-50,200 C80,240 200,140 400,210 C600,280 800,160 1000,220 C1200,280 1400,190 1634,240" stroke="#34D399" stroke-width="1.5"/>
+    <path d="M-50,240 C80,280 200,180 400,250 C600,320 800,200 1000,260 C1200,320 1400,230 1634,280" stroke="#10B981" stroke-width="1.5"/>
+    <path d="M-50,280 C80,320 200,220 400,290 C600,360 800,240 1000,300 C1200,360 1400,270 1634,320" stroke="#059669" stroke-width="1.5"/>
+  </g>
+  <!-- Logo grande central -->
+  <g transform="translate(792, 175)">
+    <g transform="scale(2.5)">
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </g>
+    <text x="-100" y="90" font-family="Syne, sans-serif" font-size="72" font-weight="800" fill="#F0F4F8" letter-spacing="6" text-anchor="middle">NEXA</text>
+  </g>
+  <!-- Tagline -->
+  <text x="792" y="305" font-family="'DM Sans', sans-serif" font-size="22" font-weight="400" fill="#8A9BB0" letter-spacing="6" text-anchor="middle">DESARROLLO DE SOFTWARE · PÁGINAS WEB · APPS A MEDIDA</text>
+  <!-- Línea decorativa inferior -->
+  <line x1="300" y1="330" x2="1284" y2="330" stroke="#10B981" stroke-width="0.8" opacity="0.3"/>
+</svg>

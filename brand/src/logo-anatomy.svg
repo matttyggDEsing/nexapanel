@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#5E7085"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="700" fill="#060A0E"/>
+
+  <!-- Title -->
+  <text x="60" y="55" font-family="Syne, sans-serif" font-size="32" font-weight="800" fill="#F0F4F8" letter-spacing="-0.02em">NEXA Logo Anatomy</text>
+  <text x="60" y="83" font-family="'DM Sans', sans-serif" font-size="14" fill="#5E7085">Isotipo structure, clear space, and usage rules</text>
+
+  <!-- Large Isotipo -->
+  <g transform="translate(200, 200) scale(3.5)">
+    <!-- 1: Front face -->
+    <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+    <!-- 2: Top left -->
+    <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+    <!-- 3: Top right face -->
+    <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+    <!-- 4: Back face central -->
+    <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+    <!-- 5: Side face right -->
+    <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+    <!-- 6: Top cap right -->
+    <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+    <!-- 7: Bottom cap right -->
+    <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+  </g>
+
+  <!-- Polygon labels -->
+  <g font-family="'DM Mono', monospace" font-size="11" fill="#5E7085">
+    <text x="420" y="115">1 → Front face (#10B981 → #34D399 gradient)</text>
+    <text x="420" y="135">2 → Top left cap (#34D399)</text>
+    <text x="420" y="155">3 → Bottom left cap (#059669)</text>
+    <text x="420" y="175">4 → Back face center (#10B981)</text>
+    <text x="420" y="195">5 → Right side face (#059669)</text>
+    <text x="420" y="215">6 → Top right cap (#34D399)</text>
+    <text x="420" y="235">7 → Bottom right cap (#059669)</text>
+  </g>
+
+  <!-- Clear space diagram -->
+  <text x="60" y="410" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F0F4F8">Clear Space — 50% Minimum</text>
+
+  <!-- Clear space box -->
+  <g transform="translate(100, 440)">
+    <!-- Outer box (clear space) -->
+    <rect x="0" y="0" width="300" height="180" rx="8" fill="none" stroke="#5E7085" stroke-width="1" stroke-dasharray="6,4"/>
+    <!-- Inner logo area -->
+    <rect x="75" y="45" width="150" height="90" rx="4" fill="#111820" stroke="#10B981" stroke-width="1"/>
+    <!-- Isotipo inside -->
+    <g transform="translate(150, 90) scale(1.8)">
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </g>
+    <!-- Arrows showing clear space -->
+    <line x1="37" y1="90" x2="72" y2="90" stroke="#5E7085" stroke-width="1" marker-end="url(#arrow)"/>
+    <line x1="228" y1="90" x2="263" y2="90" stroke="#5E7085" stroke-width="1" marker-end="url(#arrow)"/>
+    <line x1="150" y1="25" x2="150" y2="42" stroke="#5E7085" stroke-width="1" marker-end="url(#arrow)"/>
+    <line x1="150" y1="138" x2="150" y2="155" stroke="#5E7085" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="45" y="85" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085">50%</text>
+    <text x="240" y="85" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085">50%</text>
+  </g>
+
+  <!-- Minimum sizes -->
+  <text x="500" y="410" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F0F4F8">Minimum Sizes</text>
+
+  <g transform="translate(500, 440)">
+    <!-- 32px -->
+    <g transform="translate(0, 0)">
+      <rect width="60" height="60" rx="8" fill="#111820"/>
+      <g transform="translate(30, 30) scale(0.8)">
+        <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+        <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+        <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+        <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+        <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+        <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+        <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+      </g>
+      <text x="30" y="75" font-family="'DM Sans', sans-serif" font-size="11" fill="#8A9BB0" text-anchor="middle">32px</text>
+      <text x="30" y="88" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Digital min</text>
+    </g>
+
+    <!-- 100px -->
+    <g transform="translate(100, -20)">
+      <rect width="100" height="100" rx="8" fill="#111820"/>
+      <g transform="translate(50, 50) scale(1.2)">
+        <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+        <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+        <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+        <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+        <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+        <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+        <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+      </g>
+      <text x="50" y="115" font-family="'DM Sans', sans-serif" font-size="11" fill="#8A9BB0" text-anchor="middle">100px</text>
+      <text x="50" y="128" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Social profile</text>
+    </g>
+
+    <!-- 16px favicon -->
+    <g transform="translate(250, 10)">
+      <rect width="40" height="40" rx="4" fill="#111820"/>
+      <g transform="translate(20, 20) scale(0.4)">
+        <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+        <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+        <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+        <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+        <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+        <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+        <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+      </g>
+      <text x="20" y="55" font-family="'DM Sans', sans-serif" font-size="11" fill="#8A9BB0" text-anchor="middle">16px</text>
+      <text x="20" y="68" font-family="'DM Sans', sans-serif" font-size="10" fill="#5E7085" text-anchor="middle">Favicon</text>
+    </g>
+  </g>
+
+  <!-- Don'ts -->
+  <text x="500" y="560" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F0F4F8">Don'ts</text>
+
+  <g transform="translate(500, 580)" font-family="'DM Sans', sans-serif" font-size="13" fill="#FCA5A5">
+    <text x="0" y="0">✗  Don't rotate</text>
+    <text x="0" y="22">✗  Don't stretch or compress</text>
+    <text x="0" y="44">✗  Don't change polygon colors</text>
+    <text x="0" y="66">✗  Don't add shadows or 3D effects</text>
+    <text x="0" y="88">✗  Don't place on busy backgrounds without overlay</text>
+  </g>
+
+  <!-- Logotype variants -->
+  <text x="60" y="560" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F0F4F8">Logotype Variants</text>
+
+  <!-- Logotipo (icon + text) -->
+  <g transform="translate(60, 585)">
+    <rect width="380" height="55" rx="8" fill="#111820"/>
+    <g transform="translate(28, 28) scale(0.7)">
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </g>
+    <text x="55" y="33" font-family="Syne, sans-serif" font-size="20" font-weight="800" fill="#F0F4F8">NEXA</text>
+    <text x="135" y="33" font-family="'DM Sans', sans-serif" font-size="11" fill="#5E7085">Logotipo — icon + wordmark</text>
+  </g>
+
+  <!-- Tagline lockup -->
+  <g transform="translate(60, 655)">
+    <rect width="380" height="35" rx="8" fill="#111820"/>
+    <text x="20" y="23" font-family="'DM Sans', sans-serif" font-size="13" fill="#10B981">Tecnología que trasciende</text>
+    <text x="220" y="23" font-family="'DM Sans', sans-serif" font-size="11" fill="#5E7085">Tagline lockup</text>
+  </g>
+</svg>

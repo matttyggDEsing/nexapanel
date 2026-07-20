@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NEXA — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+body {
+  background: #060A0E;
+  color: #F0F4F8;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: rgba(16,185,129,0.25); color: #F0F4F8; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0B1117; }
+::-webkit-scrollbar-thumb { background: #161F2A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #059669; }
+
+/* ── Sidebar ────────────────────────────────────────────────────────────── */
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: 260px; height: 100vh;
+  background: rgba(6,10,14,0.95);
+  backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(16,185,129,0.08);
+  padding: 32px 0;
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+.sidebar-logo {
+  padding: 0 24px 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+.sidebar-logo svg { width: 36px; height: 36px; margin-bottom: 10px; }
+.sidebar-logo h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+.sidebar-logo p { font-size: 11px; color: #5E7085; margin-top: 2px; }
+.sidebar nav { padding: 0 12px; }
+.sidebar nav a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8A9BB0;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.15s;
+  margin-bottom: 2px;
+}
+.sidebar nav a:hover { color: #F0F4F8; background: rgba(16,185,129,0.06); }
+.sidebar nav a.active { color: #10B981; background: rgba(16,185,129,0.10); }
+.sidebar nav .section-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #5E7085;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 16px 12px 6px;
+}
+
+/* ── Main ───────────────────────────────────────────────────────────────── */
+.main { margin-left: 260px; padding: 48px 64px 120px; max-width: 1100px; }
+.hero { padding: 80px 0 64px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 64px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 999px;
+  background: rgba(16,185,129,0.10); border: 1px solid rgba(16,185,129,0.20);
+  font-size: 12px; font-weight: 500; color: #34D399;
+  margin-bottom: 24px;
+}
+.hero h1 { font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+.hero h1 span { color: #10B981; }
+.hero p { font-size: 18px; color: #8A9BB0; max-width: 600px; line-height: 1.7; }
+.hero-meta { display: flex; gap: 32px; margin-top: 32px; font-size: 13px; color: #5E7085; }
+.hero-meta strong { color: #8A9BB0; font-weight: 500; }
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+section { margin-bottom: 80px; scroll-margin-top: 32px; }
+section h2 {
+  font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 8px;
+  padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+section h3 {
+  font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700;
+  letter-spacing: -0.01em; margin: 40px 0 16px; color: #F0F4F8;
+}
+section h4 {
+  font-size: 14px; font-weight: 700; color: #8A9BB0;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin: 32px 0 12px;
+}
+section p { color: #8A9BB0; margin-bottom: 16px; max-width: 720px; }
+section ul, section ol { color: #8A9BB0; padding-left: 20px; margin-bottom: 16px; }
+section li { margin-bottom: 6px; }
+section li strong { color: #F0F4F8; }
+
+/* ── Color Swatches ─────────────────────────────────────────────────────── */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin: 20px 0; }
+.swatch {
+  background: #0B1117; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; overflow: hidden; cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.swatch:hover { border-color: rgba(16,185,129,0.30); transform: translateY(-2px); }
+.swatch-color { height: 80px; position: relative; }
+.swatch-color::after {
+  content: 'Click to copy';
+  position: absolute; bottom: 8px; right: 8px;
+  font-size: 10px; color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 4px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.swatch:hover .swatch-color::after { opacity: 1; }
+.swatch-info { padding: 12px 14px; }
+.swatch-name { font-weight: 700; font-size: 14px; color: #F0F4F8; margin-bottom: 2px; }
+.swatch-hex { font-family: 'DM Mono', monospace; font-size: 12px; color: #5E7085; }
+.swatch-use { font-size: 11px; color: #5E7085; margin-top: 4px; }
+
+/* Large swatches for backgrounds */
+.swatches-lg { grid-template-columns: repeat(4, 1fr); }
+.swatches-lg .swatch-color { height: 100px; }
+
+/* ── Typography Specimens ───────────────────────────────────────────────── */
+.type-specimen {
+  background: #0B1117; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 32px; margin: 16px 0;
+}
+.type-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.type-row:last-child { border-bottom: none; }
+.type-label { font-size: 11px; color: #5E7085; width: 120px; flex-shrink: 0; text-transform: uppercase; letter-spacing: 0.06em; }
+.type-sample { flex: 1; }
+.type-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: #5E7085; width: 200px; flex-shrink: 0; text-align: right; }
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+table {
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  background: #0B1117; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+th {
+  text-align: left; padding: 12px 16px;
+  font-size: 11px; font-weight: 700; color: #5E7085;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  background: #111820; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+td {
+  padding: 12px 16px; font-size: 14px; color: #8A9BB0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+td:last-child { border-bottom: none; }
+tr:last-child td { border-bottom: none; }
+td code {
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  background: #161F2A; padding: 2px 8px; border-radius: 4px; color: #34D399;
+}
+td strong { color: #F0F4F8; }
+
+/* ── Logo Section ───────────────────────────────────────────────────────── */
+.logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.logo-card {
+  background: #0B1117; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 40px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.logo-card svg { margin-bottom: 20px; }
+.logo-card.dark { background: #060A0E; }
+.logo-card.light { background: #F0F4F8; }
+.logo-card-label { font-size: 12px; color: #5E7085; margin-top: 12px; }
+.logo-card-name { font-size: 14px; font-weight: 700; color: #F0F4F8; margin-bottom: 4px; }
+
+/* ── Components Preview ─────────────────────────────────────────────────── */
+.comp-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s;
+}
+.btn-primary { background: #10B981; color: #060A0E; }
+.btn-primary:hover { background: #059669; }
+.btn-secondary { background: transparent; border: 1px solid rgba(16,185,129,0.30); color: #10B981; }
+.btn-secondary:hover { background: rgba(16,185,129,0.10); border-color: rgba(16,185,129,0.50); }
+.btn-tertiary { background: #111820; border: 1px solid rgba(255,255,255,0.06); color: #8A9BB0; }
+.btn-tertiary:hover { background: #161F2A; color: #F0F4F8; }
+
+.card-preview {
+  background: #0B1117; border: 1px solid rgba(16,185,129,0.12);
+  border-radius: 12px; padding: 24px; max-width: 340px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card-preview:hover { border-color: rgba(16,185,129,0.30); box-shadow: 0 0 24px rgba(16,185,129,0.10); }
+.card-preview h4 { margin: 0 0 8px; font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #F0F4F8; text-transform: none; letter-spacing: -0.01em; }
+.card-preview p { font-size: 14px; color: #8A9BB0; margin: 0; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 6px;
+  font-size: 12px; font-weight: 500;
+}
+.badge-emerald { background: rgba(16,185,129,0.12); color: #34D399; }
+.badge-yellow { background: rgba(245,158,11,0.12); color: #FCD34D; }
+.badge-blue { background: rgba(59,130,246,0.12); color: #93C5FD; }
+.badge-red { background: rgba(239,68,68,0.12); color: #FCA5A5; }
+.badge-purple { background: rgba(139,92,246,0.12); color: #C4B5FD; }
+
+.input-preview {
+  background: #111820; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #F0F4F8;
+  width: 300px; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-preview::placeholder { color: #5E7085; }
+.input-preview:focus { border-color: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.15); }
+
+/* ── Do / Don't ─────────────────────────────────────────────────────────── */
+.dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+.dodont-card {
+  border-radius: 12px; padding: 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.dodont-card.do { background: rgba(16,185,129,0.06); border-color: rgba(16,185,129,0.15); }
+.dodont-card.dont { background: rgba(239,68,68,0.04); border-color: rgba(239,68,68,0.12); }
+.dodont-card h4 { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+.dodont-card.do h4 { color: #34D399; }
+.dodont-card.dont h4 { color: #FCA5A5; }
+.dodont-card li { font-size: 14px; margin-bottom: 6px; }
+
+/* ── Spacing Visual ─────────────────────────────────────────────────────── */
+.spacing-visual { display: flex; align-items: flex-end; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+.spacing-block { text-align: center; }
+.spacing-block .bar {
+  background: rgba(16,185,129,0.20); border: 1px solid rgba(16,185,129,0.30);
+  border-radius: 4px; margin: 0 auto 8px;
+}
+.spacing-block .label { font-family: 'DM Mono', monospace; font-size: 11px; color: #5E7085; }
+.spacing-block .value { font-family: 'DM Mono', monospace; font-size: 12px; color: #34D399; font-weight: 500; }
+
+/* ── Gradient Examples ──────────────────────────────────────────────────── */
+.gradient-row { display: flex; gap: 16px; margin: 16px 0; }
+.gradient-box {
+  flex: 1; height: 80px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Voice Table ────────────────────────────────────────────────────────── */
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.voice-card {
+  background: #0B1117; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 20px;
+}
+.voice-card h4 { margin: 0 0 8px; font-size: 14px; color: #10B981; text-transform: none; letter-spacing: 0; }
+.voice-card p { font-size: 13px; color: #8A9BB0; margin: 0; font-style: italic; }
+
+/* ── Animation Tokens ───────────────────────────────────────────────────── */
+.anim-demo { display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
+.anim-box {
+  width: 80px; height: 80px; border-radius: 12px;
+  background: #0B1117; border: 1px solid rgba(16,185,129,0.20);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 10px; color: #5E7085;
+  cursor: pointer; transition: all 0.15s;
+}
+.anim-box:hover { border-color: #10B981; background: rgba(16,185,129,0.10); }
+.anim-box.active { background: #10B981; color: #060A0E; border-color: #10B981; }
+
+/* ── Checklist ──────────────────────────────────────────────────────────── */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; margin-bottom: 4px;
+  background: #0B1117; border-radius: 8px;
+  font-size: 14px; color: #8A9BB0;
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer; transition: all 0.15s;
+}
+.checklist li:hover { border-color: rgba(16,185,129,0.20); }
+.checklist li.checked { color: #34D399; }
+.checklist li .check {
+  width: 20px; height: 20px; border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.15s;
+}
+.checklist li.checked .check { background: #10B981; border-color: #10B981; }
+.checklist li.checked .check::after { content: '✓'; font-size: 12px; color: #060A0E; font-weight: 700; }
+
+/* ── Copy Toast ─────────────────────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: #10B981; color: #060A0E; padding: 10px 20px;
+  border-radius: 8px; font-size: 13px; font-weight: 700;
+  opacity: 0; pointer-events: none; transition: all 0.25s ease;
+  z-index: 999;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Mobile ─────────────────────────────────────────────────────────────── */
+.menu-toggle {
+  display: none; position: fixed; top: 16px; left: 16px; z-index: 200;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: #0B1117; border: 1px solid rgba(16,185,129,0.20);
+  color: #10B981; font-size: 20px; cursor: pointer;
+  align-items: center; justify-content: center;
+}
+@media (max-width: 860px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .menu-toggle { display: flex; }
+  .main { margin-left: 0; padding: 32px 24px 80px; }
+  .hero h1 { font-size: 36px; }
+  .logo-grid { grid-template-columns: 1fr; }
+  .dodont { grid-template-columns: 1fr; }
+  .voice-grid { grid-template-columns: 1fr; }
+  .swatches-lg { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile menu toggle -->
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <svg viewBox="-40 -40 80 90" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="sideGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs>
+      <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#sideGrad)"/>
+      <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+      <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+      <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+      <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+      <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+      <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+    </svg>
+    <h1>NEXA</h1>
+    <p>Brand Guidelines v1.0</p>
+  </div>
+  <nav>
+    <div class="section-label">Identidad</div>
+    <a href="#overview">Visión General</a>
+    <a href="#identity">Identidad de Marca</a>
+    <a href="#logo">Logo</a>
+    <div class="section-label">Sistema Visual</div>
+    <a href="#colors">Paleta de Colores</a>
+    <a href="#typography">Tipografía</a>
+    <a href="#spacing">Espaciado y Layout</a>
+    <a href="#icons">Iconografía</a>
+    <div class="section-label">Componentes</div>
+    <a href="#components">UI Components</a>
+    <a href="#gradients">Gradientes</a>
+    <div class="section-label">Comunicación</div>
+    <a href="#voice">Voz y Tono</a>
+    <a href="#photography">Fotografía</a>
+    <a href="#animation">Animaciones</a>
+    <div class="section-label">Publicación</div>
+    <a href="#social">Redes Sociales</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#files">Archivos</a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- Hero -->
+  <div class="hero" id="top">
+    <div class="hero-badge">◆ Brand Guidelines v1.0</div>
+    <h1>NEXA <span>Brand Book</span></h1>
+    <p>Todas las reglas de identidad, diseño y comunicación de la marca NEXA en un solo documento interactivo.</p>
+    <div class="hero-meta">
+      <div><strong>Version</strong> 1.0</div>
+      <div><strong>Date</strong> Julio 2026</div>
+      <div><strong>Status</strong> Oficial</div>
+    </div>
+  </div>
+
+  <!-- 1. Overview -->
+  <section id="overview">
+    <h2>01 — Visión General</h2>
+    <p><strong>NEXA</strong> es un estudio de desarrollo de software premium. No somos una agencia genérica — somos ingenieros que construyen productos digitales de alto impacto.</p>
+    <table>
+      <tr><td><strong>Tagline</strong></td><td><code>Tecnología que trasciende</code></td></tr>
+      <tr><td><strong>Posicionamiento</strong></td><td>Premium, no masivo · Técnico, no genérico · Confiable, no flashy</td></tr>
+      <tr><td><strong>Dominio</strong></td><td><code>nexa.design</code> / <code>nexapanel.com</code></td></tr>
+    </table>
+  </section>
+
+  <!-- 2. Identity -->
+  <section id="identity">
+    <h2>02 — Identidad de Marca</h2>
+
+    <h3>Nombre</h3>
+    <p><strong>NEXA</strong> — siempre en mayúsculas. Nunca: Nexa, nexa, NEXA!, N.EXA, Nexa Labs.</p>
+
+    <h3>Eslogans</h3>
+    <table>
+      <tr><td><strong>Principal</strong></td><td><code>Tecnología que trasciende</code></td></tr>
+      <tr><td>Secundario</td><td><code>Somos ingenieros que construyen</code></td></tr>
+      <tr><td>Secundario</td><td><code>Donde el código se convierte en producto</code></td></tr>
+      <tr><td>Secundario</td><td><code>Desarrollo que escala</code></td></tr>
+    </table>
+
+    <h3>Definiciones de Logo</h3>
+    <table>
+      <tr><th>Nombre</th><th>Descripción</th><th>Uso</th></tr>
+      <tr><td><strong>Logotipo</strong></td><td>Isotipo + palabra "NEXA"</td><td>Header web, portadas, impresos</td></tr>
+      <tr><td><strong>Isotipo</strong></td><td>Solo el icono (7 polígonos)</td><td>Favicon, redes, app icon</td></tr>
+      <tr><td><strong>Logotipo de texto</strong></td><td>Solo la palabra "NEXA"</td><td>Texto, pies de página</td></tr>
+      <tr><td><strong>Tagline lockup</strong></td><td>Logotipo + tagline</td><td>Presentaciones, docs oficiales</td></tr>
+    </table>
+  </section>
+
+  <!-- 3. Logo -->
+  <section id="logo">
+    <h2>03 — Logo</h2>
+
+    <h3>Estructura del Isotipo</h3>
+    <p>7 polígonos isométricos que forman una <strong>N</strong> tridimensional:</p>
+
+    <div class="logo-grid">
+      <div class="logo-card dark">
+        <svg width="120" height="140" viewBox="-40 -40 80 90" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs>
+          <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#lg1)"/>
+          <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+          <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+          <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+          <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+          <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+          <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+        </svg>
+        <div class="logo-card-name">Isotipo</div>
+        <div class="logo-card-label">Favicon, profile pics, app icon</div>
+      </div>
+      <div class="logo-card dark">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <svg width="48" height="56" viewBox="-40 -40 80 90" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#lg1)"/>
+            <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+            <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+            <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+            <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+            <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+            <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+          </svg>
+          <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;">NEXA</span>
+        </div>
+        <div class="logo-card-name">Logotipo</div>
+        <div class="logo-card-label">Headers, portadas, impresos grandes</div>
+      </div>
+    </div>
+
+    <h3>Polígonos y Colores</h3>
+    <table>
+      <tr><th>#</th><th>Polígono</th><th>Color</th><th>HEX</th></tr>
+      <tr><td>1</td><td>Front face principal</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10B981;vertical-align:middle;"></span> Emerald</td><td><code>#10B981</code></td></tr>
+      <tr><td>2</td><td>Top left cap</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#34D399;vertical-align:middle;"></span> Light Emerald</td><td><code>#34D399</code></td></tr>
+      <tr><td>3</td><td>Bottom left cap</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#059669;vertical-align:middle;"></span> Dark Emerald</td><td><code>#059669</code></td></tr>
+      <tr><td>4</td><td>Back face center</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#10B981;vertical-align:middle;"></span> Emerald</td><td><code>#10B981</code></td></tr>
+      <tr><td>5</td><td>Right side face</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#059669;vertical-align:middle;"></span> Dark Emerald</td><td><code>#059669</code></td></tr>
+      <tr><td>6</td><td>Top right cap</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#34D399;vertical-align:middle;"></span> Light Emerald</td><td><code>#34D399</code></td></tr>
+      <tr><td>7</td><td>Bottom right cap</td><td><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#059669;vertical-align:middle;"></span> Dark Emerald</td><td><code>#059669</code></td></tr>
+    </table>
+
+    <h3>Reglas de Uso</h3>
+    <table>
+      <tr><td><strong>Clear space</strong></td><td>50% del ancho del isotipo en cada lado</td></tr>
+      <tr><td><strong>Tamaño mínimo digital</strong></td><td>32px de alto</td></tr>
+      <tr><td><strong>Tamaño mínimo impresión</strong></td><td>10mm de alto</td></tr>
+      <tr><td><strong>Favicon</strong></td><td>16x16px (simplificado)</td></tr>
+      <tr><td><strong>Social profile</strong></td><td>isotipo solo, mínimo 100x100px</td></tr>
+    </table>
+
+    <h3>Fondos Permitidos</h3>
+    <div class="logo-grid">
+      <div class="logo-card dark" style="background:#060A0E;">
+        <div style="font-size:13px;color:#8A9BB0;">#060A0E</div>
+        <div style="font-size:11px;color:#5E7085;margin-top:4px;">✅ Preferido</div>
+      </div>
+      <div class="logo-card dark" style="background:#0B1117;">
+        <div style="font-size:13px;color:#8A9BB0;">#0B1117</div>
+        <div style="font-size:11px;color:#5E7085;margin-top:4px;">✅ Sí</div>
+      </div>
+      <div class="logo-card dark" style="background:#111820;">
+        <div style="font-size:13px;color:#8A9BB0;">#111820</div>
+        <div style="font-size:11px;color:#5E7085;margin-top:4px;">✅ Sí</div>
+      </div>
+      <div class="logo-card" style="background:linear-gradient(135deg,#060A0E,#0B1117);">
+        <div style="font-size:13px;color:#8A9BB0;">Gradiente oscuro</div>
+        <div style="font-size:11px;color:#5E7085;margin-top:4px;">✅ Sí</div>
+      </div>
+    </div>
+
+    <div class="dodont">
+      <div class="dodont-card do">
+        <h4>✅ Sí</h4>
+        <ul>
+          <li>Usar en fondos oscuros</li>
+          <li>Mantener clear space</li>
+          <li>Respetar tamaño mínimo</li>
+          <li>Usar versiones autorizadas</li>
+        </ul>
+      </div>
+      <div class="dodont-card dont">
+        <h4>✗ No</h4>
+        <ul>
+          <li>Rotar el logo</li>
+          <li>Estirar o comprimir</li>
+          <li>Cambiar colores de polígonos</li>
+          <li>Agregar sombras o efectos 3D</li>
+          <li>Colocar sobre fondos busy sin overlay</li>
+          <li>Usar versiones rasterizadas a baja res</li>
+          <li>Animar polígonos individualmente</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Colors -->
+  <section id="colors">
+    <h2>04 — Paleta de Colores</h2>
+
+    <h3>Backgrounds</h3>
+    <div class="swatches swatches-lg">
+      <div class="swatch" onclick="copyColor('#060A0E')">
+        <div class="swatch-color" style="background:#060A0E;border-bottom:1px solid #161F2A;"></div>
+        <div class="swatch-info"><div class="swatch-name">bg</div><div class="swatch-hex">#060A0E</div><div class="swatch-use">Fondo principal, body</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#0B1117')">
+        <div class="swatch-color" style="background:#0B1117;border-bottom:1px solid #161F2A;"></div>
+        <div class="swatch-info"><div class="swatch-name">bg2</div><div class="swatch-hex">#0B1117</div><div class="swatch-use">Cards, superficies</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#111820')">
+        <div class="swatch-color" style="background:#111820;border-bottom:1px solid #161F2A;"></div>
+        <div class="swatch-info"><div class="swatch-name">bg3</div><div class="swatch-hex">#111820</div><div class="swatch-use">Inputs, terciario</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#161F2A')">
+        <div class="swatch-color" style="background:#161F2A;border-bottom:1px solid #1F2B3A;"></div>
+        <div class="swatch-info"><div class="swatch-name">bg4</div><div class="swatch-hex">#161F2A</div><div class="swatch-use">Hover, active states</div></div>
+      </div>
+    </div>
+
+    <h3>Emerald (Accent Primario)</h3>
+    <div class="swatches">
+      <div class="swatch" onclick="copyColor('#10B981')">
+        <div class="swatch-color" style="background:#10B981;"></div>
+        <div class="swatch-info"><div class="swatch-name">emerald</div><div class="swatch-hex">#10B981</div><div class="swatch-use">CTAs, links, accent</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#059669')">
+        <div class="swatch-color" style="background:#059669;"></div>
+        <div class="swatch-info"><div class="swatch-name">emerald 2</div><div class="swatch-hex">#059669</div><div class="swatch-use">Borders, secondary</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#34D399')">
+        <div class="swatch-color" style="background:#34D399;"></div>
+        <div class="swatch-info"><div class="swatch-name">emerald 3</div><div class="swatch-hex">#34D399</div><div class="swatch-use">Hover, highlights</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#6EE7B7')">
+        <div class="swatch-color" style="background:#6EE7B7;"></div>
+        <div class="swatch-info"><div class="swatch-name">emerald 4</div><div class="swatch-hex">#6EE7B7</div><div class="swatch-use">Tags, small text</div></div>
+      </div>
+    </div>
+
+    <h3>Text</h3>
+    <div class="swatches" style="grid-template-columns:repeat(3,1fr);">
+      <div class="swatch" onclick="copyColor('#F0F4F8')">
+        <div class="swatch-color" style="background:#111820;display:flex;align-items:center;justify-content:center;"><span style="font-size:24px;font-weight:700;color:#F0F4F8;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">txt</div><div class="swatch-hex">#F0F4F8</div><div class="swatch-use">Headlines, primary text</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#8A9BB0')">
+        <div class="swatch-color" style="background:#111820;display:flex;align-items:center;justify-content:center;"><span style="font-size:24px;font-weight:500;color:#8A9BB0;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">txt2</div><div class="swatch-hex">#8A9BB0</div><div class="swatch-use">Body, labels</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#5E7085')">
+        <div class="swatch-color" style="background:#111820;display:flex;align-items:center;justify-content:center;"><span style="font-size:24px;color:#5E7085;">Aa</span></div>
+        <div class="swatch-info"><div class="swatch-name">txt3</div><div class="swatch-hex">#5E7085</div><div class="swatch-use">Captions, placeholders</div></div>
+      </div>
+    </div>
+
+    <h3>Estados (UI)</h3>
+    <div class="swatches" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+      <div class="swatch" onclick="copyColor('#FCD34D')">
+        <div class="swatch-color" style="background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#FCD34D;">Pending</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#FCD34D</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#34D399')">
+        <div class="swatch-color" style="background:rgba(52,211,153,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#34D399;">Active</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#34D399</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#A5B4FC')">
+        <div class="swatch-color" style="background:rgba(165,180,252,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#A5B4FC;">Completed</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#A5B4FC</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#FCA5A5')">
+        <div class="swatch-color" style="background:rgba(252,165,165,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#FCA5A5;">Error</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#FCA5A5</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#93C5FD')">
+        <div class="swatch-color" style="background:rgba(147,197,253,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#93C5FD;">Processing</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#93C5FD</div></div>
+      </div>
+      <div class="swatch" onclick="copyColor('#C4B5FD')">
+        <div class="swatch-color" style="background:rgba(196,181,253,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:500;color:#C4B5FD;">Purple</span></div>
+        <div class="swatch-info"><div class="swatch-hex">#C4B5FD</div></div>
+      </div>
+    </div>
+
+    <h3>Regla 80/20</h3>
+    <div style="display:flex;height:40px;border-radius:8px;overflow:hidden;margin:16px 0;">
+      <div style="flex:80;background:#0B1117;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#5E7085;">80% Backgrounds</div>
+      <div style="flex:15;background:#161F2A;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#8A9BB0;">15% Text</div>
+      <div style="flex:5;background:#10B981;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#060A0E;">5%</div>
+    </div>
+
+    <h3>Bordes</h3>
+    <table>
+      <tr><td><strong>border</strong></td><td><code>rgba(16,185,129,0.12)</code></td><td>Default</td></tr>
+      <tr><td><strong>border-dim</strong></td><td><code>rgba(255,255,255,0.06)</code></td><td>Subtle</td></tr>
+      <tr><td><strong>border-hover</strong></td><td><code>rgba(16,185,129,0.30)</code></td><td>Hover</td></tr>
+    </table>
+  </section>
+
+  <!-- 5. Typography -->
+  <section id="typography">
+    <h2>05 — Tipografía</h2>
+
+    <h3>Fuentes</h3>
+    <table>
+      <tr><th>Familia</th><th>Pesos</th><th>Uso</th></tr>
+      <tr><td><strong style="font-family:'Syne',sans-serif;font-weight:800;">Syne</strong></td><td>400, 700, 800</td><td>Display, headlines</td></tr>
+      <tr><td><strong style="font-family:'DM Sans',sans-serif;">DM Sans</strong></td><td>400, 500, 700</td><td>Body text, UI</td></tr>
+      <tr><td><strong style="font-family:'DM Mono',monospace;">DM Mono</strong></td><td>400, 500</td><td>Código, datos técnicos</td></tr>
+    </table>
+
+    <h3>Escala Tipográfica</h3>
+    <div class="type-specimen">
+      <div class="type-row">
+        <div class="type-label">Hero</div>
+        <div class="type-sample" style="font-family:'Syne',sans-serif;font-size:56px;font-weight:800;letter-spacing:-0.03em;line-height:1.1;">Tecnología que trasciende</div>
+        <div class="type-meta">Syne 800 · 72px<br/>line-height: 80px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">H1</div>
+        <div class="type-sample" style="font-family:'Syne',sans-serif;font-size:42px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;">Section Title</div>
+        <div class="type-meta">Syne 800 · 48px<br/>line-height: 56px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">H2</div>
+        <div class="type-sample" style="font-family:'Syne',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;">Subsection</div>
+        <div class="type-meta">Syne 700 · 36px<br/>line-height: 44px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">H3</div>
+        <div class="type-sample" style="font-family:'Syne',sans-serif;font-size:24px;font-weight:700;">Card Title</div>
+        <div class="type-meta">Syne 700 · 28px<br/>line-height: 36px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">H4</div>
+        <div class="type-sample" style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Label</div>
+        <div class="type-meta">Syne 700 · 22px<br/>line-height: 30px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Body</div>
+        <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;">Somos ingenieros que construyen productos digitales de alto impacto.</div>
+        <div class="type-meta">DM Sans 400 · 16px<br/>line-height: 26px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Body small</div>
+        <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:14px;color:#8A9BB0;">Desarrollo web y móvil a medida. Escalable, moderno, maintainable.</div>
+        <div class="type-meta">DM Sans 400 · 14px<br/>line-height: 22px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Caption</div>
+        <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#5E7085;letter-spacing:0.03em;">TECH AUTHORITY · SERVICES · EDUCATION</div>
+        <div class="type-meta">DM Sans 500 · 12px<br/>tracking: +0.03em</div>
+      </div>
+      <div class="type-row">
+        <div class="type-label">Code</div>
+        <div class="type-sample" style="font-family:'DM Mono',monospace;font-size:13px;color:#8A9BB0;">const nexa = { stack: ['React', 'Node', 'Postgres'] };</div>
+        <div class="type-meta">DM Mono 400 · 13px<br/>line-height: 20px</div>
+      </div>
+    </div>
+
+    <h3>Reglas de Tracking</h3>
+    <table>
+      <tr><th>Contexto</th><th>Tracking</th><th>Razón</th></tr>
+      <tr><td>Headlines Syne</td><td><code>-0.02em</code></td><td>Ligeramente cerrado para impacto</td></tr>
+      <tr><td>Body DM Sans</td><td><code>0</code></td><td>Default, legibilidad</td></tr>
+      <tr><td>Labels/Captions</td><td><code>+0.03em</code></td><td>Abierto para legibilidad en tamaño pequeño</td></tr>
+      <tr><td>Code</td><td><code>0</code></td><td>Monospace no necesita ajuste</td></tr>
+    </table>
+  </section>
+
+  <!-- 6. Spacing -->
+  <section id="spacing">
+    <h2>06 — Espaciado y Layout</h2>
+
+    <h3>Sistema de Espaciado (4px grid)</h3>
+    <div class="spacing-visual">
+      <div class="spacing-block"><div class="bar" style="width:20px;height:4px;"></div><div class="value">4</div><div class="label">xs</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:8px;"></div><div class="value">8</div><div class="label">sm</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:12px;"></div><div class="value">12</div><div class="label">md</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:16px;"></div><div class="value">16</div><div class="label">lg</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:24px;"></div><div class="value">24</div><div class="label">xl</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:32px;"></div><div class="value">32</div><div class="label">2xl</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:48px;"></div><div class="value">48</div><div class="label">3xl</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:64px;"></div><div class="value">64</div><div class="label">4xl</div></div>
+      <div class="spacing-block"><div class="bar" style="width:20px;height:80px;"></div><div class="value">96</div><div class="label">5xl</div></div>
+    </div>
+
+    <h3>Grid</h3>
+    <table>
+      <tr><td><strong>Max width</strong></td><td>1200px (contenido), full bleed para backgrounds</td></tr>
+      <tr><td><strong>Columnas</strong></td><td>12, gutter 24px</td></tr>
+      <tr><td><strong>Page margins</strong></td><td>60px (feed), 40px (story)</td></tr>
+    </table>
+
+    <h3>Breakpoints</h3>
+    <table>
+      <tr><td><strong>Mobile</strong></td><td>375px</td><td>1 columna</td></tr>
+      <tr><td><strong>Tablet</strong></td><td>768px</td><td>2-4 columnas</td></tr>
+      <tr><td><strong>Desktop</strong></td><td>1024px</td><td>8-12 columnas</td></tr>
+      <tr><td><strong>Wide</strong></td><td>1440px</td><td>12 columnas, max-width</td></tr>
+    </table>
+
+    <h3>Border Radius</h3>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin:16px 0;">
+      <div style="text-align:center;"><div style="width:60px;height:60px;background:#0B1117;border:1px solid rgba(16,185,129,0.20);border-radius:6px;margin:0 auto 8px;"></div><div style="font-family:'DM Mono',monospace;font-size:11px;color:#34D399;">6px</div><div style="font-size:11px;color:#5E7085;">sm</div></div>
+      <div style="text-align:center;"><div style="width:60px;height:60px;background:#0B1117;border:1px solid rgba(16,185,129,0.20);border-radius:12px;margin:0 auto 8px;"></div><div style="font-family:'DM Mono',monospace;font-size:11px;color:#34D399;">12px</div><div style="font-size:11px;color:#5E7085;">md</div></div>
+      <div style="text-align:center;"><div style="width:60px;height:60px;background:#0B1117;border:1px solid rgba(16,185,129,0.20);border-radius:16px;margin:0 auto 8px;"></div><div style="font-family:'DM Mono',monospace;font-size:11px;color:#34D399;">16px</div><div style="font-size:11px;color:#5E7085;">lg</div></div>
+      <div style="text-align:center;"><div style="width:60px;height:60px;background:#0B1117;border:1px solid rgba(16,185,129,0.20);border-radius:24px;margin:0 auto 8px;"></div><div style="font-family:'DM Mono',monospace;font-size:11px;color:#34D399;">24px</div><div style="font-size:11px;color:#5E7085;">xl</div></div>
+      <div style="text-align:center;"><div style="width:60px;height:60px;background:#0B1117;border:1px solid rgba(16,185,129,0.20);border-radius:9999px;margin:0 auto 8px;"></div><div style="font-family:'DM Mono',monospace;font-size:11px;color:#34D399;">full</div><div style="font-size:11px;color:#5E7085;">pill</div></div>
+    </div>
+
+    <h3>Shadows</h3>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin:16px 0;">
+      <div style="width:120px;height:80px;background:#0B1117;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#5E7085;box-shadow:0 4px 24px rgba(0,0,0,0.40);">card</div>
+      <div style="width:120px;height:80px;background:#0B1117;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#5E7085;box-shadow:0 8px 32px rgba(0,0,0,0.55);">card-hover</div>
+      <div style="width:120px;height:80px;background:#0B1117;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#5E7085;box-shadow:0 0 40px rgba(16,185,129,0.25);">glow</div>
+      <div style="width:120px;height:80px;background:#0B1117;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#5E7085;box-shadow:0 0 80px rgba(16,185,129,0.15);">glow-lg</div>
+    </div>
+  </section>
+
+  <!-- 7. Icons -->
+  <section id="icons">
+    <h2>07 — Iconografía</h2>
+    <table>
+      <tr><td><strong>Stroke width</strong></td><td>1.5px (consistente)</td></tr>
+      <tr><td><strong>Tamaño base</strong></td><td>20x20px</td></tr>
+      <tr><td><strong>Color</strong></td><td>Heredado (<code>currentColor</code>)</td></tr>
+      <tr><td><strong>Estilo</strong></td><td>Líneas simples, sin relleno, esquinas redondeadas</td></tr>
+    </table>
+    <div class="dodont">
+      <div class="dodont-card do">
+        <h4>✅ Sí</h4>
+        <ul>
+          <li>Icono + texto en CTAs</li>
+          <li>Icono arriba del título en features</li>
+          <li>Icono solo con tooltip en nav</li>
+          <li>Icono + badge color para status</li>
+        </ul>
+      </div>
+      <div class="dodont-card dont">
+        <h4>✗ No</h4>
+        <ul>
+          <li>Iconos decorativos sin función</li>
+          <li>Mezclar outline + filled en la misma sección</li>
+          <li>Iconos animados (excepto loading)</li>
+          <li>Iconos de más de 24px sin justificación</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Components -->
+  <section id="components">
+    <h2>08 — Componentes de UI</h2>
+
+    <h3>Botones</h3>
+    <div class="comp-row">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-tertiary">Tertiary</button>
+    </div>
+
+    <h3>Badges</h3>
+    <div class="comp-row">
+      <span class="badge badge-emerald">Active</span>
+      <span class="badge badge-yellow">Pending</span>
+      <span class="badge badge-blue">Processing</span>
+      <span class="badge badge-red">Error</span>
+      <span class="badge badge-purple">Completed</span>
+    </div>
+
+    <h3>Cards</h3>
+    <div class="comp-row">
+      <div class="card-preview">
+        <h4>Feature Card</h4>
+        <p>Un ejemplo de card con borde sutil, hover glow, y tipografía NEXA.</p>
+      </div>
+    </div>
+
+    <h3>Inputs</h3>
+    <div class="comp-row">
+      <input class="input-preview" type="text" placeholder="Escribí acá..."/>
+    </div>
+
+    <h3>Specs</h3>
+    <table>
+      <tr><th>Componente</th><th>Background</th><th>Border</th><th>Radius</th></tr>
+      <tr><td><strong>Card</strong></td><td><code>#0B1117</code></td><td><code>1px solid rgba(16,185,129,0.12)</code></td><td>12px</td></tr>
+      <tr><td><strong>Button Primary</strong></td><td><code>#10B981</code></td><td>none</td><td>12px</td></tr>
+      <tr><td><strong>Button Secondary</strong></td><td>transparent</td><td><code>1px solid rgba(16,185,129,0.30)</code></td><td>12px</td></tr>
+      <tr><td><strong>Badge</strong></td><td><code>rgba(16,185,129,0.12)</code></td><td>none</td><td>6px</td></tr>
+      <tr><td><strong>Input</strong></td><td><code>#111820</code></td><td><code>1px solid rgba(255,255,255,0.06)</code></td><td>8px</td></tr>
+    </table>
+  </section>
+
+  <!-- 9. Gradients -->
+  <section id="gradients">
+    <h2>09 — Gradientes</h2>
+    <div class="gradient-row">
+      <div class="gradient-box" style="background:linear-gradient(135deg,#10B981,#34D399);">Primary<br/>#10B981 → #34D399</div>
+      <div class="gradient-box" style="background:linear-gradient(135deg,#060A0E,#0B1117);">Background<br/>#060A0E → #0B1117</div>
+      <div class="gradient-box" style="background:linear-gradient(90deg,#10B981,#6EE7B7,#10B981);background-size:200% auto;animation:shimmer 3s linear infinite;">Text Shimmer<br/>Animado infinito</div>
+    </div>
+    <style>@keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }</style>
+
+    <h3>Card Glow</h3>
+    <div style="display:flex;gap:16px;margin:16px 0;">
+      <div style="width:200px;height:100px;background:#0B1117;border-radius:12px;box-shadow:0 0 40px rgba(16,185,129,0.10);display:flex;align-items:center;justify-content:center;font-size:12px;color:#5E7085;">rgba(16,185,129,0.10)</div>
+      <div style="width:200px;height:100px;background:#0B1117;border-radius:12px;box-shadow:0 0 60px rgba(16,185,129,0.20);display:flex;align-items:center;justify-content:center;font-size:12px;color:#5E7085;">rgba(16,185,129,0.20)</div>
+      <div style="width:200px;height:100px;background:#0B1117;border-radius:12px;box-shadow:0 0 80px rgba(16,185,129,0.30);display:flex;align-items:center;justify-content:center;font-size:12px;color:#5E7085;">rgba(16,185,129,0.30)</div>
+    </div>
+  </section>
+
+  <!-- 10. Voice -->
+  <section id="voice">
+    <h2>10 — Voz y Tono</h2>
+
+    <h3>Personalidad</h3>
+    <p>NEXA habla como un <strong>ingeniero senior confiado</strong>, no como un vendedor.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card"><h4>Somos</h4><p>Técnicos y precisos · Confianza sin arrogancia · Educativos · Directos · Profesionales · Humanos</p></div>
+      <div class="voice-card"><h4>No somos</h4><p>Vagos o genéricos · Presumidos · Condescendientes · Rudos · Corporativos fríos · Informales</p></div>
+    </div>
+
+    <h3>Tono por Contexto</h3>
+    <table>
+      <tr><th>Contexto</th><th>Tono</th><th>Ejemplo</th></tr>
+      <tr><td><strong>Post técnico</strong></td><td>Authoritative, directo</td><td><em>"El patrón observer resuelve el acoplamiento excesivo entre componentes."</em></td></tr>
+      <tr><td><strong>Case study</strong></td><td>Orgulloso pero medido</td><td><em>"Logramos reducir el tiempo de carga un 60% migrando a arquitectura modular."</em></td></tr>
+      <tr><td><strong>Educación</strong></td><td>Paciente, claro</td><td><em>"¿Por qué usamos async/await? Porque bloquear el hilo principal deja tu app sin respuesta."</em></td></tr>
+      <tr><td><strong>Behind the scenes</strong></td><td>Cercano, humano</td><td><em>"Equipo de NEXA en modo build. Cuando el deploy funciona al primer intento."</em></td></tr>
+      <tr><td><strong>CTA</strong></td><td>Directo, sin presión</td><td><em>"¿Tenés un proyecto? Hablemos."</em></td></tr>
+    </table>
+
+    <h3>Reglas de Copy</h3>
+    <ol>
+      <li><strong>Siempre en español</strong> (adaptado al español rioplatense / neutro)</li>
+      <li><strong>Evitar muletillas:</strong> "increíble", "revolucionario", "game changer", "disruptivo"</li>
+      <li><strong>Evitar superlativos vacíos:</strong> "el mejor", "número 1", "sin igual"</li>
+      <li><strong>Usar datos concretos:</strong> "60% más rápido", "3 meses de desarrollo"</li>
+      <li><strong>No usar emojis</strong> en copy de marca (max 2 por post en redes)</li>
+      <li><strong>Hashtags:</strong> máximo 5 por post, minúsculas, con punto medio</li>
+    </ol>
+  </section>
+
+  <!-- 11. Photography -->
+  <section id="photography">
+    <h2>11 — Fotografía e Imagen</h2>
+    <div class="dodont">
+      <div class="dodont-card do">
+        <h4>✅ Estilo Permitido</h4>
+        <ul>
+          <li>Ambientes de trabajo reales</li>
+          <li>Code screenshots con theme oscuro</li>
+          <li>Equipos en reuniones/standups</li>
+          <li>Detalles de hardware</li>
+          <li>Minimalista, mucho espacio negativo</li>
+        </ul>
+      </div>
+      <div class="dodont-card dont">
+        <h4>✗ Evitar</h4>
+        <ul>
+          <li>Stock photos genéricos</li>
+          <li>Screenshots con fondo blanco</li>
+          <li>Retratos corporativos formales</li>
+          <li>Imágenes de "futuro" con IA generativa</li>
+          <li>Collages saturados</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Filtros</h3>
+    <table>
+      <tr><td><strong>Overlay oscuro</strong></td><td>Mínimo 60% negro sobre fotos con texto</td></tr>
+      <tr><td><strong>Tono</strong></td><td>Frío a neutro (evitar cálidos/naranja)</td></tr>
+      <tr><td><strong>Saturación</strong></td><td>-10% a -20% (look serio)</td></tr>
+      <tr><td><strong>Contraste</strong></td><td>+10% (look definido)</td></tr>
+      <tr><td><strong>Nunca</strong></td><td>Viñetas, bordes redondeados, film grain excesivo</td></tr>
+    </table>
+  </section>
+
+  <!-- 12. Animation -->
+  <section id="animation">
+    <h2>12 — Animaciones</h2>
+
+    <h3>Principios</h3>
+    <ul>
+      <li><strong>Propósito:</strong> Cada animación tiene una razón (feedback, orientación, fluidez)</li>
+      <li><strong>Rapidez:</strong> Transiciones de 200-300ms ideales</li>
+      <li><strong>Easing:</strong> <code>ease-out</code> para entradas, <code>cubic-bezier(0.16, 1, 0.3, 1)</code> para spring</li>
+      <li><strong>Reduced motion:</strong> Respetar <code>prefers-reduced-motion: reduce</code></li>
+    </ul>
+
+    <h3>Tokens</h3>
+    <table>
+      <tr><td><strong>duration-fast</strong></td><td><code>150ms</code></td><td>Hover states, toggles</td></tr>
+      <tr><td><strong>duration-normal</strong></td><td><code>250ms</code></td><td>Transiciones de card, modales</td></tr>
+      <tr><td><strong>duration-slow</strong></td><td><code>400ms</code></td><td>Page transitions, reveals</td></tr>
+      <tr><td><strong>duration-slower</strong></td><td><code>600ms</code></td><td>Hero animations</td></tr>
+    </table>
+
+    <h3>Aprobadas vs Prohibidas</h3>
+    <div class="dodont">
+      <div class="dodont-card do">
+        <h4>✅ Aprobadas</h4>
+        <ul>
+          <li>Fade in/out (opacidad 0→1)</li>
+          <li>Slide up (desde 16px abajo)</li>
+          <li>Scale (0.98→1.02 en hover)</li>
+          <li>Glow pulse (emerald box-shadow)</li>
+          <li>Shimmer en gradient text</li>
+          <li>Spin en loading spinner</li>
+        </ul>
+      </div>
+      <div class="dodont-card dont">
+        <h4>✗ Prohibidas</h4>
+        <ul>
+          <li>Bounce / elastic en UI</li>
+          <li>Parallax excesivo en scroll</li>
+          <li>Typing effect letter-by-letter</li>
+          <li>Elementos que rotan continuamente</li>
+          <li>Animaciones > 1s sin pausa</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Social -->
+  <section id="social">
+    <h2>13 — Redes Sociales</h2>
+
+    <h3>Formatos</h3>
+    <table>
+      <tr><th>Formato</th><th>Dimensiones</th><th>Uso</th></tr>
+      <tr><td><strong>Instagram Feed</strong></td><td>1080x1080</td><td>Posts principales, tips</td></tr>
+      <tr><td><strong>Instagram Story</strong></td><td>1080x1920</td><td>BTS, quick tips, CTAs</td></tr>
+      <tr><td><strong>X/Twitter</strong></td><td>1600x900</td><td>Tips, code, announcements</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>1200x627</td><td>Case studies, thought leadership</td></tr>
+      <tr><td><strong>Carousel</strong></td><td>1080x1080 multi</td><td>Tutoriales, guías</td></tr>
+      <tr><td><strong>YouTube Thumb</strong></td><td>1920x1080</td><td>Video thumbnails</td></tr>
+    </table>
+
+    <h3>Estructura de Post</h3>
+    <div style="background:#0B1117;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:32px;max-width:400px;margin:16px 0;">
+      <div style="display:inline-block;padding:4px 10px;border-radius:6px;background:rgba(16,185,129,0.12);color:#34D399;font-size:11px;font-weight:500;margin-bottom:16px;">· TECH AUTHORITY</div>
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px;line-height:1.3;">El patrón Observer desacopla tus componentes</div>
+      <div style="width:60px;height:2px;background:linear-gradient(90deg,#10B981,#34D399);margin-bottom:16px;border-radius:1px;"></div>
+      <div style="font-size:14px;color:#8A9BB0;margin-bottom:24px;">Cuando un objeto cambia de estado, todos sus dependientes se actualizan automáticamente.</div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;display:flex;align-items:center;gap:8px;font-size:11px;color:#5E7085;">
+        <svg width="16" height="16" viewBox="-40 -40 80 90"><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="#10B981"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/></svg>
+        NEXA · Tecnología que trasciende · nexa.design
+      </div>
+    </div>
+
+    <h3>Frecuencia</h3>
+    <table>
+      <tr><th>Plataforma</th><th>Mínima</th><th>Máxima</th></tr>
+      <tr><td><strong>Instagram</strong></td><td>5/semana</td><td>7/semana</td></tr>
+      <tr><td><strong>X/Twitter</strong></td><td>5/semana</td><td>14/semana</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>2/semana</td><td>3/semana</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>3/semana</td><td>5/semana</td></tr>
+      <tr><td><strong>YouTube</strong></td><td>1/semana</td><td>2/semana</td></tr>
+    </table>
+  </section>
+
+  <!-- 14. Checklist -->
+  <section id="checklist">
+    <h2>14 — Checklist de Marca</h2>
+    <p>Antes de publicar CUALQUIER asset, verificar:</p>
+    <ul class="checklist" id="checklistList">
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Logo tiene clear space mínimo</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Colores usados son de la paleta oficial</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Tipografía: Syne para headlines, DM Sans para body, DM Mono para código</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Jerarquía visual clara (máximo 4 niveles)</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Contraste WCAG AA mínimo (4.5:1 texto, 3:1 gráficos)</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>No hay contenido que contradiga el tono de marca</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Formato correcto para la plataforma</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>No hay errores tipográficos</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>El logo no está recortado, distorsionado, o con efectos extra</li>
+      <li onclick="this.classList.toggle('checked')"><span class="check"></span>Si es animación: respeta <code>prefers-reduced-motion</code></li>
+    </ul>
+  </section>
+
+  <!-- 15. Files -->
+  <section id="files">
+    <h2>15 — Archivos de Marca</h2>
+    <table>
+      <tr><th>Ruta</th><th>Descripción</th></tr>
+      <tr><td><code>brand/brand-guidelines.md</code></td><td>Brand book oficial (Markdown)</td></tr>
+      <tr><td><code>brand/skill/SKILL.md</code></td><td>Referencia rápida para diseño</td></tr>
+      <tr><td><code>brand/social-content.js</code></td><td>Copy y datos de posts</td></tr>
+      <tr><td><code>brand/social-posts-v3.js</code></td><td>Generador visual de posts</td></tr>
+      <tr><td><code>brand/src/logotipo-core.svg</code></td><td>Logotipo completo</td></tr>
+      <tr><td><code>brand/src/isotipo-core.svg</code></td><td>Isotipo (7 polígonos)</td></tr>
+      <tr><td><code>brand/src/isotipo-dark.svg</code></td><td>Isotipo grayscale</td></tr>
+      <tr><td><code>brand/src/banner-web.svg</code></td><td>Banner web 1920x600</td></tr>
+      <tr><td><code>brand/src/color-palette.svg</code></td><td>Swatches de colores</td></tr>
+      <tr><td><code>brand/src/typography-specimen.svg</code></td><td>Escala tipográfica</td></tr>
+      <tr><td><code>brand/src/logo-anatomy.svg</code></td><td>Anatomía del logo</td></tr>
+      <tr><td><code>brand/fonts/</code></td><td>Syne, DM Sans, DM Mono (TTF)</td></tr>
+      <tr><td><code>brand/posts/</code></td><td>Posts generados (PNG + SVG)</td></tr>
+      <tr><td><code>docs/social-media-strategy.md</code></td><td>Estrategia de contenido</td></tr>
+      <tr><td><code>docs/social-media-calendar.md</code></td><td>Calendario editorial</td></tr>
+      <tr><td><code>docs/nexa-design-philosophy.md</code></td><td>Filosofía de diseño</td></tr>
+    </table>
+
+    <h3>Autoridad de Marca</h3>
+    <table>
+      <tr><td><strong>Aprobar cambios</strong></td><td>Fundador / Director Creativo</td></tr>
+      <tr><td><strong>Cambios de paleta</strong></td><td>Requieren revisión de accesibilidad</td></tr>
+      <tr><td><strong>Nuevos colores</strong></td><td>Máximo 1 nuevo por semestre</td></tr>
+      <tr><td><strong>Font changes</strong></td><td>Solo con razón técnica de peso</td></tr>
+    </table>
+  </section>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:32px;margin-top:64px;text-align:center;">
+    <p style="color:#5E7085;font-size:13px;text-align:center;">NEXA Brand Guidelines v1.0 — Julio 2026<br/>Documento oficial de marca. Uso fuera de estas guidelines requiere aprobación explícita.</p>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copiado al portapapeles</div>
+
+<script>
+// Copy color to clipboard
+function copyColor(hex) {
+  navigator.clipboard.writeText(hex).then(() => {
+    const t = document.getElementById('toast');
+    t.textContent = hex + ' copiado';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1500);
+  });
+}
+
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar nav a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Close sidebar on mobile when clicking a link
+navLinks.forEach(l => l.addEventListener('click', () => {
+  document.querySelector('.sidebar').classList.remove('open');
+}));
+</script>
+</body>
+</html>

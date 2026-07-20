@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#060A0E"/>
+
+  <!-- Title -->
+  <text x="60" y="60" font-family="Syne, sans-serif" font-size="32" font-weight="800" fill="#F0F4F8" letter-spacing="-0.02em">NEXA Typography</text>
+  <text x="60" y="88" font-family="'DM Sans', sans-serif" font-size="14" fill="#5E7085">Font families, weights, and type scale</text>
+
+  <!-- Syne -->
+  <text x="60" y="150" font-family="Syne, sans-serif" font-size="16" font-weight="700" fill="#10B981" letter-spacing="0.03em">SYNE — Display / Headlines</text>
+
+  <text x="60" y="195" font-family="Syne, sans-serif" font-size="72" font-weight="800" fill="#F0F4F8" letter-spacing="-0.02em">Tecnología que trasciende</text>
+
+  <text x="60" y="250" font-family="Syne, sans-serif" font-size="48" font-weight="800" fill="#F0F4F8" letter-spacing="-0.02em">Hero Title (72px / 800)</text>
+  <text x="60" y="270" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 72px · font-weight: 800 · letter-spacing: -0.02em</text>
+
+  <text x="60" y="320" font-family="Syne, sans-serif" font-size="48" font-weight="800" fill="#F0F4F8" letter-spacing="-0.02em">H1 — Section Title (48px / 800)</text>
+  <text x="60" y="340" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 48px · font-weight: 800 · line-height: 56px</text>
+
+  <text x="60" y="390" font-family="Syne, sans-serif" font-size="36" font-weight="700" fill="#F0F4F8" letter-spacing="-0.02em">H2 — Subsection (36px / 700)</text>
+  <text x="60" y="410" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 36px · font-weight: 700 · line-height: 44px</text>
+
+  <text x="60" y="455" font-family="Syne, sans-serif" font-size="28" font-weight="700" fill="#F0F4F8" letter-spacing="-0.02em">H3 — Card Title (28px / 700)</text>
+  <text x="60" y="475" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 28px · font-weight: 700 · line-height: 36px</text>
+
+  <text x="60" y="518" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F0F4F8" letter-spacing="-0.02em">H4 — Label (22px / 700)</text>
+  <text x="60" y="538" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 22px · font-weight: 700 · line-height: 30px</text>
+
+  <!-- Separator -->
+  <line x1="60" y1="565" x2="1140" y2="565" stroke="#161F2A" stroke-width="1"/>
+
+  <!-- DM Sans -->
+  <text x="60" y="605" font-family="Syne, sans-serif" font-size="16" font-weight="700" fill="#10B981" letter-spacing="0.03em">DM SANS — Body / UI</text>
+
+  <text x="60" y="645" font-family="'DM Sans', sans-serif" font-size="16" fill="#F0F4F8">Somos ingenieros que construyen productos digitales de alto impacto. No somos una agencia genérica — somos el equipo técnico que tu proyecto necesita.</text>
+  <text x="60" y="665" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 16px · font-weight: 400 · line-height: 26px — Body</text>
+
+  <text x="60" y="705" font-family="'DM Sans', sans-serif" font-size="14" fill="#8A9BB0">Desarrollo web y móvil a medida. Escalable, moderno, maintainable.</text>
+  <text x="60" y="725" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 14px · font-weight: 400 · line-height: 22px — Body small</text>
+
+  <text x="60" y="760" font-family="'DM Sans', sans-serif" font-size="12" font-weight="500" fill="#5E7085" letter-spacing="0.03em">TECH AUTHORITY · SERVICES · EDUCATION</text>
+  <text x="60" y="780" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 12px · font-weight: 500 · letter-spacing: 0.03em — Caption</text>
+
+  <!-- DM Mono -->
+  <text x="60" y="825" font-family="Syne, sans-serif" font-size="16" font-weight="700" fill="#10B981" letter-spacing="0.03em">DM MONO — Code / Technical</text>
+
+  <text x="60" y="862" font-family="'DM Mono', monospace" font-size="13" fill="#8A9BB0">const nexa = { stack: ['React', 'Node', 'Postgres'], focus: 'premium' };</text>
+  <text x="60" y="882" font-family="'DM Mono', monospace" font-size="12" fill="#5E7085">font-size: 13px · font-weight: 400 · line-height: 20px</text>
+</svg>
