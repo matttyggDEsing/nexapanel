@@ -8,3 +8,6 @@ dist/
 .superpowers/
 *.zip
 *.ttf
+
+.vercel
+.env*.local

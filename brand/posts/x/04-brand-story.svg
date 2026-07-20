@@ -8,7 +8,21 @@
     <rect x="60" y="60" width="151.5" height="32" rx="16" fill="#10B981" opacity="0.12"/>
     <text x="135.75" y="81" font-family="Syne, sans-serif" font-weight="700" font-size="11" fill="#34D399" text-anchor="middle" letter-spacing="0.12em">BRAND STORY</text>
   </g>
-  <g transform="translate(1520, 52) scale(0.3)"><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient></defs><polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#logoGrad)" opacity="0.85"/><polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399" opacity="0.85"/><polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669" opacity="0.85"/><polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981" opacity="0.85"/><polygon points="10,-15 25,-20 25,25 10,20" fill="#059669" opacity="0.85"/><polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399" opacity="0.85"/><polygon points="10,20 25,25 10,45 -5,40" fill="#059669" opacity="0.85"/></g>
+  <g transform="translate(1532, 64) scale(0.3)">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <polygon points="-20,-30 -5,-35 -5,20 -20,25" fill="url(#grad1)"/>
+  <polygon points="-20,-30 -5,-35 -20,-15 -35,-10" fill="#34D399"/>
+  <polygon points="-20,25 -5,20 -20,40 -35,35" fill="#059669"/>
+  <polygon points="-5,-35 10,-15 10,20 -5,20" fill="#10B981"/>
+  <polygon points="10,-15 25,-20 25,25 10,20" fill="#059669"/>
+  <polygon points="10,-15 25,-20 10,0 -5,5" fill="#34D399"/>
+  <polygon points="10,20 25,25 10,45 -5,40" fill="#059669"/>
+</g>
 
   <text x="540" y="180" font-family="Syne, sans-serif" font-weight="800" font-size="68" fill="#10B981" opacity="0.06" text-anchor="middle">"</text>
 

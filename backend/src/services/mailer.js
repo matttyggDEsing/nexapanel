@@ -1,3 +1,4 @@
+const axios = require('axios');
 const nodemailer = require('nodemailer');
 const env = require('../config/env');
 const logger = require('../utils/logger');
@@ -19,7 +20,33 @@ const getTransporter = () => {
   return transporter;
 };
 
+const sendViaLettr = async ({ to, subject, html }) => {
+  const apiKey = env.LETTR_API_KEY;
+  if (!apiKey) {
+    logger.warn('[Mailer] LETTR_API_KEY no configurada. Skipping send.');
+    return;
+  }
+  try {
+    await axios.post('https://app.lettr.com/api/emails', {
+      from: env.MAIL_FROM || 'info@nexapanel.io',
+      to: [to],
+      subject,
+      html,
+    }, {
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      timeout: 15000,
+    });
+    logger.info(`[Mailer] Email enviado a ${to} (Lettr)`);
+  } catch (err) {
+    const msg = err.response?.data?.message || err.message;
+    logger.error(`[Mailer] Error enviando email (Lettr): ${msg}`);
+  }
+};
+
 const sendMail = async ({ to, subject, html }) => {
+  if (env.LETTR_API_KEY) {
+    return sendViaLettr({ to, subject, html });
+  }
   const t = getTransporter();
   if (!t) {
     logger.warn('[Mailer] Email no configurado. Skipping send.');

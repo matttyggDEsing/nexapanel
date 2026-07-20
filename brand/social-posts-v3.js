@@ -31,6 +31,22 @@ if (fontFiles.length === 0) {
 const logotipoSvg = fs.readFileSync(LOGO_PATH, 'utf8');
 const isotipoSvg = fs.readFileSync(ISOTIPO_PATH, 'utf8');
 
+// Parse a loaded SVG file into its viewBox + inner markup, so we can re-embed
+// the REAL brand artwork (instead of a hand-typed approximation) at any size.
+function parseSvgInner(svgString) {
+  const viewBoxMatch = svgString.match(/viewBox="([^"]+)"/);
+  const viewBox = viewBoxMatch
+    ? viewBoxMatch[1].trim().split(/\s+/).map(Number)
+    : [0, 0, 80, 90]; // fallback only if the file has no viewBox
+  const inner = svgString
+    .replace(/<\?xml[^>]*\?>/, '')
+    .replace(/<svg[^>]*>/, '')
+    .replace(/<\/svg>\s*$/, '');
+  return { viewBox, inner };
+}
+
+const ISOTIPO = parseSvgInner(isotipoSvg);
+
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // SVG PRIMITIVES
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,40 +87,36 @@ function badge(text, x = 60, y = 60) {
   </g>`;
 }
 
+// Places the REAL isotipo artwork (loaded from src/isotipo-core.svg) at (x, y)
+// scaled by `scale`. (x, y) is the top-left corner of the logo's bounding box,
+// matching how every call site in this file already positions it — the old
+// version silently used a hand-drawn approximation instead of this file.
 function logotipo(x, y, scale = 0.6) {
-  return `<g transform="translate(${x}, ${y}) scale(${scale})">${extractLogoPolygons()}</g>`;
-}
-
-function extractLogoPolygons() {
-  // Extract polygon data from the real logo SVG
-  const polygons = [];
-  const gradDef = `<defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${C.em3}"/><stop offset="100%" stop-color="${C.em}"/></linearGradient></defs>`;
-  
-  const polyData = [
-    { points: '-20,-30 -5,-35 -5,20 -20,25', fill: 'url(#logoGrad)' },
-    { points: '-20,-30 -5,-35 -20,-15 -35,-10', fill: C.em3 },
-    { points: '-20,25 -5,20 -20,40 -35,35', fill: C.em2 },
-    { points: '-5,-35 10,-15 10,20 -5,20', fill: C.em },
-    { points: '10,-15 25,-20 25,25 10,20', fill: C.em2 },
-    { points: '10,-15 25,-20 10,0 -5,5', fill: C.em3 },
-    { points: '10,20 25,25 10,45 -5,40', fill: C.em2 },
-  ];
-
-  return gradDef + polyData.map(p => `<polygon points="${p.points}" fill="${p.fill}" opacity="0.85"/>`).join('');
+  const [vx, vy] = ISOTIPO.viewBox;
+  return `<g transform="translate(${x - vx * scale}, ${y - vy * scale}) scale(${scale})">${ISOTIPO.inner}</g>`;
 }
 
 function bottomBar(h, w = 1080) {
-  // Isotipo viewBox: -40 -40 80 90 → at scale 0.38 → 30x34px (visible, not dominant)
+  // Use the REAL isotipo's own viewBox instead of a hardcoded 80x90 guess.
   const logoScale = 0.38;
-  const logoW = 80 * logoScale;  // 30px
-  const logoH = 90 * logoScale;  // 34px
+  const logoW = ISOTIPO.viewBox[2] * logoScale;
+  const logoH = ISOTIPO.viewBox[3] * logoScale;
+
+  // "NEXA" is set in Syne (a wide display face) at weight 800 with extra
+  // letter-spacing, so it needs a generous fixed budget — the previous
+  // 65px gap between wordmark and tagline was too tight and Syne's glyphs
+  // ran into "Tecnología...". 110px comfortably clears it at this size/weight.
+  const wordmarkX = logoW + 14;
+  const taglineX = wordmarkX + 110;
+
   return `<g>
     <rect x="0" y="${h - 72}" width="${w}" height="72" fill="${C.bg2}" opacity="0.85"/>
     <line x1="0" y1="${h - 72}" x2="${w}" y2="${h - 72}" stroke="${C.em}" stroke-opacity="0.1" stroke-width="1"/>
     <g transform="translate(60, ${h - 48})">
       ${logotipo(0, -logoH / 2, logoScale)}
-      <text x="${logoW + 10}" y="6" font-family="${F.display}, sans-serif" font-weight="800" font-size="15" fill="${C.txt}" letter-spacing="2">NEXA</text>
-      <text x="${logoW + 75}" y="6" font-family="${F.body}, sans-serif" font-weight="400" font-size="12" fill="${C.txt3}" letter-spacing="0.5">Tecnología que trasciende</text>
+      <text x="${wordmarkX}" y="6" font-family="${F.display}, sans-serif" font-weight="800" font-size="15" fill="${C.txt}" letter-spacing="2">NEXA</text>
+      <circle cx="${taglineX - 18}" cy="2" r="2" fill="${C.txt3}" opacity="0.5"/>
+      <text x="${taglineX}" y="6" font-family="${F.body}, sans-serif" font-weight="400" font-size="12" fill="${C.txt3}" letter-spacing="0.5">Tecnología que trasciende</text>
     </g>
     <text x="${w - 60}" y="${h - 42}" font-family="${F.body}, sans-serif" font-size="12" fill="${C.txt3}" text-anchor="end" letter-spacing="0.5">${content.brand.domain}</text>
   </g>`;
@@ -278,10 +290,10 @@ function post_Services_Carousel() {
   const W = 1080, H = 1080;
   const slides = [];
 
-  // Slide 1 — Cover (logo centered: x = 540 - (80*1.4)/2, y = 360 - (90*1.4)/2)
+  // Slide 1 — Cover (logo centered on the canvas, using the real isotipo's own dimensions)
   const coverLogoScale = 1.4;
-  const coverLogoX = 540 - (80 * coverLogoScale) / 2;  // 540 - 56 = 484
-  const coverLogoY = 360 - (90 * coverLogoScale) / 2;  // 360 - 63 = 297
+  const coverLogoX = 540 - (ISOTIPO.viewBox[2] * coverLogoScale) / 2;
+  const coverLogoY = 360 - (ISOTIPO.viewBox[3] * coverLogoScale) / 2;
   slides.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   ${pageShell(W, H)}
   ${gridPattern(W, H, 0.015)}
@@ -330,8 +342,8 @@ function post_Services_Carousel() {
 
   // Slide 3 — CTA (logo centered between CTA button and bottom bar)
   const ctaLogoScale = 0.85;
-  const ctaLogoX = 540 - (80 * ctaLogoScale) / 2;  // 540 - 34 = 506
-  const ctaLogoY = 660 - (90 * ctaLogoScale) / 2;  // centered vertically in available space
+  const ctaLogoX = 540 - (ISOTIPO.viewBox[2] * ctaLogoScale) / 2;
+  const ctaLogoY = 660 - (ISOTIPO.viewBox[3] * ctaLogoScale) / 2;
   slides.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   ${pageShell(W, H)}
   ${gridPattern(W, H, 0.015)}
