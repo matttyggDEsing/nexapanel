@@ -13,7 +13,11 @@ const STATS = [
 
 function compactFormat(n) {
   if (n >= 1000000) return (n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1) + 'M'
-  if (n >= 1000) return (n / 1000).toFixed(0) + 'K'
+  if (n >= 1000) {
+    const k = n / 1000
+    if (k >= 999.5) return (k / 1000).toFixed(1) + 'M'
+    return k.toFixed(0) + 'K'
+  }
   return String(n)
 }
 

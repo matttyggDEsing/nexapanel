@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Star, Instagram, Youtube, Music, Send } from 'lucide-react'
+import { ArrowRight, Star, Instagram, Youtube, Music, Send, Shield } from 'lucide-react'
 import { wordContainer, wordReveal, fadeUp, EASE } from '@/lib/motion'
 import { useMagnetic } from '@/hooks/useMagnetic'
 
 const HEADLINE_LINE_1 = ['Impulsa', 'tus', 'redes']
 const HEADLINE_LINE_2 = ['al', 'siguiente', 'nivel']
 
-// Feed simulado del panel — rota para dar sensación de flujo real de
-// órdenes. Es el elemento "firma" del hero: en vez de un blob genérico,
-// mostramos lo que el producto realmente hace.
 const FEED = [
   { icon: Instagram, color: '#E1306C', label: 'Seguidores Instagram', qty: '+250', time: 'hace 2s' },
   { icon: Music,      color: '#1DB954', label: 'Reproducciones Spotify', qty: '+1,200', time: 'hace 6s' },
@@ -119,7 +116,12 @@ export default function Hero() {
   const cta = useMagnetic(0.3)
 
   return (
-    <section className="relative pt-36 pb-24 px-6 md:px-10">
+    <section className="relative pt-36 pb-28 px-6 md:px-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[600px] bg-gradient-to-b from-bg-primary/30 via-transparent to-transparent"
+      />
+
       <div className="mx-auto max-w-6xl grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
         {/* Copy */}
         <div className="relative z-10">
@@ -164,15 +166,21 @@ export default function Hero() {
             </button>
           </motion.div>
 
-          <motion.div {...fadeUp(0.75)} className="flex items-center gap-2 flex-wrap">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill="#FCD34D" color="#FCD34D" />
-              ))}
+          <motion.div {...fadeUp(0.75)} className="flex items-center gap-5 flex-wrap">
+            <div className="flex items-center gap-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={14} fill="#FCD34D" color="#FCD34D" />
+                ))}
+              </div>
+              <span className="text-[13px] text-txt-secondary">
+                <strong className="text-txt-primary">4.9/5</strong>
+              </span>
             </div>
-            <span className="text-[13px] text-txt-secondary">
-              <strong className="text-txt-primary">4.9/5</strong> · +50,000 clientes satisfechos
-            </span>
+            <div className="flex items-center gap-1.5 text-[13px] text-txt-secondary">
+              <Shield size={13} className="text-em-3" />
+              +50,000 clientes satisfechos
+            </div>
           </motion.div>
         </div>
 

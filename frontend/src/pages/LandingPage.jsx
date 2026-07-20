@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import LandingScene from '@/components/three/LandingScene'
 import CustomCursor from '@/components/landing/CustomCursor'
 import NoiseOverlay from '@/components/landing/NoiseOverlay'
@@ -12,28 +11,29 @@ import FinalCTA from '@/components/landing/FinalCTA'
 import Footer from '@/components/landing/Footer'
 
 export default function LandingPage() {
-  // La escena 3D (CoreOrb + red de nodos + grid + formas flotantes) mide
-  // el scroll contra este mismo contenedor, así que se densifica/gira
-  // más a medida que se avanza por toda la landing, no solo el hero.
-  const sceneZoneRef = useRef(null)
-
   return (
     <div className="relative text-txt-primary font-sans overflow-x-hidden bg-bg-primary">
       <CustomCursor />
       <NoiseOverlay />
+
+      <LandingScene fullPage />
+
+      <div className="fixed inset-0 z-[1] pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(6,10,14,0) 0%, rgba(6,10,14,0.15) 15%, rgba(6,10,14,0) 30%, rgba(6,10,14,0.08) 50%, rgba(6,10,14,0) 70%, rgba(6,10,14,0.12) 85%, rgba(6,10,14,0) 100%)',
+        }}
+      />
+
       <Nav />
 
-      <div ref={sceneZoneRef} className="relative">
-        <LandingScene targetRef={sceneZoneRef} />
-
-        <div className="relative z-[1]">
-          <Hero />
-          <PlatformMarquee />
-          <StatsStrip />
-          <Features />
-          <Sellers />
-        </div>
-      </div>
+      <main className="relative z-[2]">
+        <Hero />
+        <PlatformMarquee />
+        <StatsStrip />
+        <Features />
+        <Sellers />
+      </main>
 
       <FinalCTA />
       <Footer />
