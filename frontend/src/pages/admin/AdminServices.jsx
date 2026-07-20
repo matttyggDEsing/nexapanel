@@ -172,6 +172,16 @@ export default function AdminServices() {
     }
   }
 
+  const toggleSellerVisible = async (service) => {
+    try {
+      await api.patch(`/admin/services/${service.id}`, { seller_visible: service.seller_visible ? 0 : 1 })
+      toast.success(service.seller_visible ? 'Oculto para vendedores' : 'Visible para vendedores')
+      fetchData()
+    } catch (err) {
+      toast.error(err?.response?.data?.message ?? 'Error al cambiar visibilidad')
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       <motion.div initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0 }}>
@@ -221,7 +231,7 @@ export default function AdminServices() {
           <table className="w-full">
             <thead>
               <tr style={{ borderBottom:'1px solid var(--border2)', background:'var(--bg3)' }}>
-                {['ID','Nombre','Categoría','Proveedor','Costo/1K','Precio/1K','Ganancia','Min','Max','Activo'].map(h => (
+                {['ID','Nombre','Categoría','Proveedor','Costo/1K','Precio/1K','Ganancia','Min','Max','Activo','Vendedor'].map(h => (
                   <th key={h} className="text-left px-4 py-3 text-xs font-medium uppercase tracking-wider"
                     style={{ color:'var(--txt3)' }}>{h}</th>
                 ))}
@@ -292,6 +302,15 @@ export default function AdminServices() {
                             className="transition-all"
                             style={{ color: s.is_active ? 'var(--em3)' : 'var(--txt3)' }}>
                             {s.is_active
+                              ? <ToggleRight size={22}/>
+                              : <ToggleLeft  size={22}/>}
+                          </button>
+                        </td>
+                        <td className="px-4 py-3">
+                          <button onClick={() => toggleSellerVisible(s)}
+                            className="transition-all"
+                            style={{ color: s.seller_visible ? 'var(--em3)' : 'var(--txt3)' }}>
+                            {s.seller_visible
                               ? <ToggleRight size={22}/>
                               : <ToggleLeft  size={22}/>}
                           </button>

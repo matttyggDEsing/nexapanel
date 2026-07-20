@@ -104,7 +104,7 @@ const createSale = async (req, res, next) => {
       if (!svc) throw new Error(`Servicio ${item.service_id} no encontrado o inactivo`);
       const qty      = parseInt(item.quantity) || 1;
       const price    = parseFloat(item.unit_price) || parseFloat(svc.rate);
-      const subtotal = price * qty;
+      const subtotal = (qty / 1000) * price;
       total += subtotal;
       enrichedItems.push({ service_id: svc.id, quantity: qty, unit_price: price, subtotal, link: item.link || null });
     }

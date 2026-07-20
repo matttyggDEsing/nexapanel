@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Calculator, DollarSign, Percent, Hash, TrendingUp, RefreshCw } from 'lucide-react'
+import { Calculator, DollarSign, Percent, Hash, TrendingUp, RefreshCw, Search, X, Loader2 } from 'lucide-react'
 import { sellerService } from '@/services/sellerService'
 import { useDebounce } from '@/hooks/useDebounce'
 
@@ -60,6 +60,11 @@ export default function SellerCalculator() {
   const [quantity, setQuantity] = useState('1')
   const [syncing, setSyncing] = useState(false)
   const [serverResult, setServerResult] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [serviceResults, setServiceResults] = useState([])
+  const [selectedService, setSelectedService] = useState(null)
+  const [searchingServices, setSearchingServices] = useState(false)
+  const debouncedServiceSearch = useDebounce(searchQuery, 350)
 
   const debouncedCost = useDebounce(cost, 350)
   const debouncedMarkup = useDebounce(markup, 350)
@@ -106,6 +111,18 @@ export default function SellerCalculator() {
     return () => { active = false }
   }, [debouncedCost, debouncedMarkup, debouncedQty])
 
+  useEffect(() => {
+    if (!debouncedServiceSearch || debouncedServiceSearch.length < 2) {
+      setServiceResults([])
+      return
+    }
+    setSearchingServices(true)
+    sellerService.getServices({ page: 1, perPage: 8, search: debouncedServiceSearch })
+      .then(res => setServiceResults(res.data?.data || []))
+      .catch(() => setServiceResults([]))
+      .finally(() => setSearchingServices(false))
+  }, [debouncedServiceSearch])
+
   const result = serverResult || local
   const fmt = (n) => `$${Number(n || 0).toFixed(2)}`
   const fmtPct = (n) => `${Number(n || 0).toFixed(1)}%`
@@ -131,6 +148,68 @@ export default function SellerCalculator() {
           <div className="flex items-center gap-2">
             <Calculator size={16} style={{ color: 'var(--em)' }} />
             <h2 className="font-display font-semibold text-sm" style={{ color: 'var(--txt)' }}>Entradas</h2>
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium uppercase tracking-wider mb-1.5" style={{ color: 'var(--txt3)' }}>
+              Servicio (opcional)
+            </label>
+            {selectedService ? (
+              <div className="flex items-center gap-2 p-2.5 rounded-xl mb-2"
+                style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm truncate font-medium" style={{ color: 'var(--txt)' }}>{selectedService.name}</p>
+                  <p className="text-xs" style={{ color: 'var(--txt3)' }}>
+                    Costo: ${Number(selectedService.provider_rate || 0).toFixed(4)} / 1000
+                  </p>
+                </div>
+                <button onClick={() => { setSelectedService(null); setCost('') }}
+                  className="p-1 rounded-lg" style={{ color: 'var(--txt3)' }}>
+                  <X size={14} />
+                </button>
+              </div>
+            ) : (
+              <div className="relative mb-2">
+                <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--txt3)' }} />
+                <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Buscar servicio por nombre..."
+                  className="w-full pl-8 pr-3 py-2 rounded-xl text-sm outline-none transition-all"
+                  style={{ background: 'var(--bg3)', border: '1px solid var(--border2)', color: 'var(--txt)' }}
+                  onFocus={e => e.target.style.borderColor = 'rgba(16,185,129,0.35)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border2)'}
+                />
+              </div>
+            )}
+            {searchQuery.length >= 2 && !selectedService && (
+              <div className="rounded-xl border overflow-hidden max-h-48 overflow-y-auto mb-2"
+                style={{ borderColor: 'var(--border2)', background: 'var(--bg3)' }}>
+                {searchingServices ? (
+                  <div className="p-3 text-center text-xs flex items-center justify-center gap-2" style={{ color: 'var(--txt3)' }}>
+                    <Loader2 size={11} className="animate-spin" /> Buscando...
+                  </div>
+                ) : serviceResults.length === 0 ? (
+                  <div className="p-3 text-center text-xs" style={{ color: 'var(--txt3)' }}>Sin resultados</div>
+                ) : (
+                  serviceResults.map(s => (
+                    <button key={s.id} onClick={() => {
+                      setSelectedService(s)
+                      setCost(String(s.provider_rate || ''))
+                      setSearchQuery('')
+                      setServiceResults([])
+                    }}
+                      className="w-full flex items-center justify-between px-3 py-2 text-left transition-all"
+                      style={{ borderBottom: '1px solid var(--border2)' }}
+                      onMouseEnter={e => e.currentTarget.style.background = 'var(--bg4)'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
+                      <span className="text-sm truncate" style={{ color: 'var(--txt)' }}>{s.name}</span>
+                      <span className="text-xs flex-shrink-0" style={{ color: 'var(--txt3)' }}>
+                        ${Number(s.provider_rate || 0).toFixed(4)}
+                      </span>
+                    </button>
+                  ))
+                )}
+              </div>
+            )}
           </div>
 
           <FieldShell label="Costo proveedor" icon={DollarSign}>

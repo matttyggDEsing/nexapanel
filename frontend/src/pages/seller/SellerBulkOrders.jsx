@@ -157,7 +157,7 @@ function ServicePicker({ row, onChange }) {
                 onMouseEnter={e => e.currentTarget.style.background = 'var(--bg4)'}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
                 <span className="text-sm truncate" style={{ color: 'var(--txt)' }}>{s.name}</span>
-                <span className="text-xs flex-shrink-0" style={{ color: 'var(--em3)' }}>${Number(s.rate).toFixed(4)}</span>
+                <span className="text-xs flex-shrink-0" style={{ color: 'var(--em3)' }}>${Number(s.rate).toFixed(4)} / 1000</span>
               </button>
             ))
           )}
@@ -180,7 +180,7 @@ export default function SellerBulkOrders() {
   const removeRow = (id) => setRows(prev => prev.length > 1 ? prev.filter(r => r._id !== id) : prev)
 
   const validRows = rows.filter(r => r.service_id && parseInt(r.quantity) > 0)
-  const total = validRows.reduce((sum, r) => sum + (Number(r.service?.rate || 0) * parseInt(r.quantity || 0)), 0)
+  const total = validRows.reduce((sum, r) => sum + ((parseInt(r.quantity || 0) / 1000) * Number(r.service?.rate || 0)), 0)
 
   const isValid = customer && validRows.length > 0
 
@@ -243,7 +243,7 @@ export default function SellerBulkOrders() {
           <div className="space-y-2.5">
             <AnimatePresence initial={false}>
               {rows.map((row) => {
-                const subtotal = row.service && row.quantity ? Number(row.service.rate) * parseInt(row.quantity || 0) : 0
+                const subtotal = row.service && row.quantity ? (parseInt(row.quantity || 0) / 1000) * Number(row.service.rate) : 0
                 return (
                   <motion.div key={row._id} layout
                     initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}

@@ -113,7 +113,7 @@ const getAll = async ({ limit = 20, offset = 0, search = null, categoryId = null
   const [rows] = await pool.query(
     `SELECT s.id, s.provider_service_id, s.name, s.description,
             s.rate, s.min_order, s.max_order, s.type,
-            s.refill, s.cancel, s.is_active, s.sort_order,
+            s.refill, s.cancel, s.is_active, s.seller_visible, s.sort_order,
             s.created_at, s.updated_at,
             c.name AS category_name, c.id AS category_id,
             p.name AS provider_name
@@ -157,7 +157,7 @@ const create = async ({
 const update = async (id, data) => {
   const allowed = [
     'name', 'description', 'rate', 'min_order', 'max_order',
-    'type', 'is_active', 'category_id', 'refill', 'cancel', 'sort_order',
+    'type', 'is_active', 'seller_visible', 'category_id', 'refill', 'cancel', 'sort_order',
   ];
   const fields = [];
   const values = [];

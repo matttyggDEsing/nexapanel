@@ -315,7 +315,7 @@ function StepServices({ cart, onCartChange }) {
       const existing = prev.find(i => i.service_id === svc.id)
       if (existing) {
         return prev.map(i => i.service_id === svc.id
-          ? { ...i, quantity: i.quantity + 1, subtotal: (i.quantity + 1) * i.unit_price }
+          ? { ...i, quantity: i.quantity + 1, subtotal: ((i.quantity + 1) / 1000) * i.unit_price }
           : i
         )
       }
@@ -324,7 +324,7 @@ function StepServices({ cart, onCartChange }) {
         service_name: svc.name,
         unit_price: parseFloat(svc.rate || 0),
         quantity: 1,
-        subtotal: parseFloat(svc.rate || 0),
+        subtotal: (1 / 1000) * parseFloat(svc.rate || 0),
       }]
     })
   }
@@ -336,7 +336,7 @@ function StepServices({ cart, onCartChange }) {
     }
     onCartChange(prev => prev.map(i =>
       i.service_id === service_id
-        ? { ...i, quantity: qty, subtotal: qty * i.unit_price }
+        ? { ...i, quantity: qty, subtotal: (qty / 1000) * i.unit_price }
         : i
     ))
   }
@@ -345,7 +345,7 @@ function StepServices({ cart, onCartChange }) {
     const p = parseFloat(price) || 0
     onCartChange(prev => prev.map(i =>
       i.service_id === service_id
-        ? { ...i, unit_price: p, subtotal: i.quantity * p }
+        ? { ...i, unit_price: p, subtotal: (i.quantity / 1000) * p }
         : i
     ))
   }
@@ -398,7 +398,7 @@ function StepServices({ cart, onCartChange }) {
                     style={{ borderBottom: i < services.length - 1 ? '1px solid var(--border2)' : 'none' }}>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs truncate font-medium" style={{ color: 'var(--txt)' }}>{svc.name}</p>
-                      <p className="text-xs" style={{ color: 'var(--em3)' }}>{fmtMoney(svc.rate)}</p>
+                      <p className="text-xs" style={{ color: 'var(--em3)' }}>{fmtMoney(svc.rate)} / 1000</p>
                     </div>
                     <button
                       onClick={() => addToCart(svc)}

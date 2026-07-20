@@ -124,7 +124,7 @@ router.post('/bulk-orders', async (req, res, next) => {
         if (!svc) continue;
 
         const unit_price = parseFloat(svc.rate);
-        const subtotal   = unit_price * parseInt(quantity);
+        const subtotal   = (parseInt(quantity) / 1000) * unit_price;
 
         // Crear venta individual por cada ítem
         const [saleRes] = await conn.query(
@@ -222,7 +222,7 @@ router.get('/services', async (req, res, next) => {
     const limit  = Math.min(100, Math.max(1, parseInt(perPage) || 50));
     const offset = (Math.max(1, parseInt(page) || 1) - 1) * limit;
 
-    const conditions = ['s.is_active = 1'];
+    const conditions = ['s.is_active = 1', 's.seller_visible = 1'];
     const params     = [];
 
     if (category_id) { conditions.push('s.category_id = ?'); params.push(parseInt(category_id)); }
@@ -234,7 +234,7 @@ router.get('/services', async (req, res, next) => {
       `SELECT COUNT(*) AS total FROM services s ${where}`, params
     );
     const [rows] = await pool.query(
-      `SELECT s.id, s.name, s.rate, s.min_order, s.max_order, s.type,
+      `SELECT s.id, s.name, s.rate, s.provider_rate, s.min_order, s.max_order, s.type,
               c.name AS category_name, c.id AS category_id
        FROM services s
        JOIN categories c ON c.id = s.category_id
