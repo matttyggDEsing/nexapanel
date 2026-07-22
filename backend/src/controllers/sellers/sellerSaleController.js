@@ -72,18 +72,17 @@ const getSale = async (req, res, next) => {
 const VALID_PAYMENT_METHODS = ['transferencia', 'mercadopago', 'crypto', 'efectivo', 'otro'];
 
 const createSale = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const sellerId = req.user.id;
     const { customer_id, items, payment_method, notes } = req.body;
 
     if (payment_method && !VALID_PAYMENT_METHODS.includes(payment_method)) {
-      conn.release();
       return errorResponse(res, `Método de pago inválido. Usa: ${VALID_PAYMENT_METHODS.join(', ')}`, 400);
     }
 
     if (!customer_id || !Array.isArray(items) || items.length === 0) {
-      conn.release();
       return errorResponse(res, 'customer_id e items son requeridos', 400);
     }
 
@@ -92,7 +91,7 @@ const createSale = async (req, res, next) => {
       'SELECT id FROM seller_customers WHERE id = ? AND seller_id = ?',
       [customer_id, sellerId]
     );
-    if (!customer) { conn.release(); return errorResponse(res, 'Cliente no encontrado', 404); }
+    if (!customer) { return errorResponse(res, 'Cliente no encontrado', 404); }
 
     await conn.beginTransaction();
 
@@ -135,13 +134,13 @@ const createSale = async (req, res, next) => {
     );
 
     await conn.commit();
-    conn.release();
 
     return successResponse(res, { id: saleId, total }, 'Venta creada', 201);
   } catch (err) {
-    try { await conn.rollback(); } catch (_) {}
-    conn.release();
+    if (conn) { try { await conn.rollback(); } catch (_) {} }
     next(err);
+  } finally {
+    if (conn) conn.release();
   }
 };
 
@@ -178,15 +177,16 @@ const updateSale = async (req, res, next) => {
 
 // ── Duplicar venta ────────────────────────────────────────────────────────
 const duplicateSale = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const sellerId = req.user.id;
 
     const [[sale]] = await conn.query(
       'SELECT * FROM seller_sales WHERE id = ? AND seller_id = ?',
       [req.params.id, sellerId]
     );
-    if (!sale) { conn.release(); return errorResponse(res, 'Venta no encontrada', 404); }
+    if (!sale) { return errorResponse(res, 'Venta no encontrada', 404); }
 
     const [items] = await conn.query(
       'SELECT * FROM seller_sale_items WHERE sale_id = ?',
@@ -210,13 +210,13 @@ const duplicateSale = async (req, res, next) => {
     }
 
     await conn.commit();
-    conn.release();
 
     return successResponse(res, { id: newSale.insertId }, 'Venta duplicada', 201);
   } catch (err) {
-    try { await conn.rollback(); } catch (_) {}
-    conn.release();
+    if (conn) { try { await conn.rollback(); } catch (_) {} }
     next(err);
+  } finally {
+    if (conn) conn.release();
   }
 };
 

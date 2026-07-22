@@ -151,14 +151,15 @@ const capturePayPalOrder = async (req, res, next) => {
     if (!depositId || userId !== req.user.id) {
       return errorResponse(res, 'Orden PayPal no corresponde al usuario', 400);
     }
-    const conn = await pool.getConnection();
+    let conn;
     try {
+      conn = await pool.getConnection();
       await conn.beginTransaction();
       const [[deposit]] = await conn.query(
         `SELECT * FROM deposit_requests WHERE id = ? AND status = 'pending' FOR UPDATE`,
         [depositId],
       );
-      if (!deposit) { await conn.rollback(); conn.release(); return errorResponse(res, 'Depósito no encontrado o ya procesado', 404); }
+      if (!deposit) { await conn.rollback(); return errorResponse(res, 'Depósito no encontrado o ya procesado', 404); }
       await conn.query(`UPDATE deposit_requests SET status = 'completed', updated_at = NOW() WHERE id = ?`, [depositId]);
       const [[userRow]] = await conn.query('SELECT balance FROM users WHERE id = ? FOR UPDATE', [userId]);
       const balanceBefore = parseFloat(userRow.balance);
@@ -169,10 +170,11 @@ const capturePayPalOrder = async (req, res, next) => {
          VALUES (?, 'credit', ?, ?, ?, ?, 'paypal', ?, 'completed')`,
         [userId, amount, balanceBefore, balanceBefore + amount, `Depósito vía PayPal`, paypalOrderId],
       );
-      await conn.commit(); conn.release();
+      await conn.commit();
       logger.info(`[PayPal] Capture #${depositId} completado: $${amount}`);
       return successResponse(res, { newBalance: balanceBefore + amount }, 'Depósito completado');
-    } catch (err) { try { await conn.rollback(); } catch (_) {} conn.release(); next(err); }
+    } catch (err) { if (conn) { try { await conn.rollback(); } catch (_) {} } next(err); }
+    finally { if (conn) conn.release(); }
   } catch (err) { next(err); }
 };
 

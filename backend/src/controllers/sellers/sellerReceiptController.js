@@ -6,12 +6,13 @@ const { paginate } = require('../../utils/pagination');
 
 // ── Crear recibo a partir de una venta ────────────────────────────────────
 const createReceipt = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const sellerId = req.user.id;
     const { sale_id, notes, status } = req.body;
 
-    if (!sale_id) { conn.release(); return errorResponse(res, 'sale_id es requerido', 400); }
+    if (!sale_id) { return errorResponse(res, 'sale_id es requerido', 400); }
 
     await conn.beginTransaction();
 
@@ -20,7 +21,7 @@ const createReceipt = async (req, res, next) => {
       'SELECT * FROM seller_sales WHERE id = ? AND seller_id = ? FOR UPDATE',
       [sale_id, sellerId]
     );
-    if (!sale) { await conn.rollback(); conn.release(); return errorResponse(res, 'Venta no encontrada', 404); }
+    if (!sale) { return errorResponse(res, 'Venta no encontrada', 404); }
 
     // Verificar que no exista ya un recibo para esa venta
     const [[existing]] = await conn.query(
@@ -28,7 +29,6 @@ const createReceipt = async (req, res, next) => {
       [sale_id]
     );
     if (existing) {
-      await conn.rollback(); conn.release();
       return errorResponse(res, `Ya existe el recibo ${existing.id} para esta venta`, 409);
     }
 
@@ -54,13 +54,13 @@ const createReceipt = async (req, res, next) => {
     );
 
     await conn.commit();
-    conn.release();
 
     return successResponse(res, { id: result.insertId, receipt_number }, 'Recibo generado', 201);
   } catch (err) {
-    try { await conn.rollback(); } catch (_) {}
-    conn.release();
+    if (conn) { try { await conn.rollback(); } catch (_) {} }
     next(err);
+  } finally {
+    if (conn) conn.release();
   }
 };
 

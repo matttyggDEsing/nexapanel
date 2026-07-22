@@ -68,21 +68,20 @@ const getOrderChart = async (req, res, next) => {
 };
 
 const createOrder = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const { service_id, link, quantity, comments } = req.body;
     const userId = req.user.id;
 
     const service = await serviceModel.findById(service_id);
     if (!service || !service.is_active) {
-      conn.release();
       return errorResponse(res, 'Servicio no disponible', 404);
     }
 
     // Para servicios de tipo Comments, comments es requerido
     const isCommentService = /comment/i.test(service.type ?? '');
     if (isCommentService && (!comments || !comments.toString().trim())) {
-      conn.release();
       return errorResponse(res, 'Este servicio requiere que ingreses los comentarios', 400);
     }
 
@@ -129,7 +128,6 @@ const createOrder = async (req, res, next) => {
 
     // Validar cantidad contra los límites actualizados
     if (quantity < service.min_order || quantity > service.max_order) {
-      conn.release();
       return errorResponse(
         res,
         `La cantidad debe estar entre ${service.min_order} y ${service.max_order}`,
@@ -159,7 +157,6 @@ const createOrder = async (req, res, next) => {
 
     if (!userRow || parseFloat(userRow.balance) < charge) {
       await conn.rollback();
-      conn.release();
       return errorResponse(res, 'Saldo insuficiente', 402);
     }
 
@@ -198,7 +195,6 @@ const createOrder = async (req, res, next) => {
     );
 
     await conn.commit();
-    conn.release();
 
     // Enviar la orden al proveedor en segundo plano
     setImmediate(async () => {
@@ -271,9 +267,10 @@ const createOrder = async (req, res, next) => {
     return successResponse(res, order, 'Orden creada exitosamente', 201);
 
   } catch (err) {
-    try { await conn.rollback(); } catch (_) {}
-    conn.release();
+    if (conn) { try { await conn.rollback(); } catch (_) {} }
     next(err);
+  } finally {
+    if (conn) conn.release();
   }
 };
 

@@ -130,8 +130,10 @@ export default function SellerCustomers() {
       const res = await sellerService.getCustomers({ page, perPage: 12, search: search || undefined })
       setCustomers(res.data.data || [])
       setPagination(res.data.pagination || { total: 0, totalPages: 1 })
-    } catch (_) {}
-    finally { setLoading(false) }
+    } catch (err) {
+      const msg = err?.response?.data?.message || 'Error al cargar clientes'
+      toast.error(msg)
+    } finally { setLoading(false) }
   }, [page, search])
 
   useEffect(() => { setPage(1) }, [search])

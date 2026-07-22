@@ -88,14 +88,15 @@ const updateUserStatus = async (req, res, next) => {
 };
 
 const adminAddFunds = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     const amount = parseFloat(req.body.amount);
     const userId = parseInt(req.params.id);
-    if (!amount || amount <= 0) { conn.release(); return errorResponse(res, 'Monto inválido', 400); }
+    if (!amount || amount <= 0) { return errorResponse(res, 'Monto inválido', 400); }
     await conn.beginTransaction();
     const [[userRow]] = await conn.query('SELECT balance FROM users WHERE id = ? FOR UPDATE', [userId]);
-    if (!userRow) { await conn.rollback(); conn.release(); return errorResponse(res, 'Usuario no encontrado', 404); }
+    if (!userRow) { await conn.rollback(); return errorResponse(res, 'Usuario no encontrado', 404); }
     const balanceBefore = parseFloat(userRow.balance);
     await conn.query('UPDATE users SET balance = balance + ?, updated_at = NOW() WHERE id = ?', [amount, userId]);
     await conn.query(
@@ -103,11 +104,13 @@ const adminAddFunds = async (req, res, next) => {
        VALUES (?, 'credit', ?, ?, ?, 'Recarga manual por administrador', 'manual', 'completed')`,
       [userId, amount, balanceBefore, balanceBefore + amount]
     );
-    await conn.commit(); conn.release();
+    await conn.commit();
     return successResponse(res, { balance: balanceBefore + amount }, 'Fondos añadidos');
   } catch (err) {
-    try { await conn.rollback(); } catch (_) {}
-    conn.release(); next(err);
+    if (conn) { try { await conn.rollback(); } catch (_) {} }
+    next(err);
+  } finally {
+    if (conn) conn.release();
   }
 };
 
@@ -428,14 +431,15 @@ const getDeposits = async (req, res, next) => {
 };
 
 const approveDeposit = async (req, res, next) => {
-  const conn = await pool.getConnection();
+  let conn;
   try {
+    conn = await pool.getConnection();
     await conn.beginTransaction();
     const [[deposit]] = await conn.query(
       `SELECT * FROM deposit_requests WHERE id = ? AND status = 'pending' FOR UPDATE`,
       [req.params.id],
     );
-    if (!deposit) { await conn.rollback(); conn.release(); return errorResponse(res, 'No encontrado o ya procesado', 404); }
+    if (!deposit) { await conn.rollback(); return errorResponse(res, 'No encontrado o ya procesado', 404); }
     await conn.query(`UPDATE deposit_requests SET status = 'completed', updated_at = NOW() WHERE id = ?`, [deposit.id]);
     const [[userRow]] = await conn.query('SELECT balance FROM users WHERE id = ? FOR UPDATE', [deposit.user_id]);
     const balanceBefore = parseFloat(userRow.balance);
@@ -447,9 +451,10 @@ const approveDeposit = async (req, res, next) => {
       [deposit.user_id, amount, balanceBefore, balanceBefore + amount,
        `Depósito aprobado (${deposit.method})`, deposit.method, String(deposit.id)],
     );
-    await conn.commit(); conn.release();
+    await conn.commit();
     return successResponse(res, { newBalance: balanceBefore + amount }, 'Depósito aprobado');
-  } catch (err) { try { await conn.rollback(); } catch (_) {} conn.release(); next(err); }
+  } catch (err) { if (conn) { try { await conn.rollback(); } catch (_) {} } next(err); }
+  finally { if (conn) conn.release(); }
 };
 
 const rejectDeposit = async (req, res, next) => {

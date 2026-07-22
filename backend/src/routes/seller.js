@@ -22,6 +22,7 @@ const receiptCtrl   = require('../controllers/sellers/sellerReceiptController');
 
 const { pool }                           = require('../config/db');
 const { successResponse, errorResponse } = require('../utils/response');
+const logger                             = require('../utils/logger');
 
 const router = express.Router();
 
@@ -44,6 +45,31 @@ const fileFilter = (_req, file, cb) => {
   else cb(new Error('Formato de imagen no permitido. Usá jpg, jpeg, png o webp.'), false);
 };
 const upload = multer({ storage, fileFilter, limits: { fileSize: 5 * 1024 * 1024 } }); // 5 MB
+
+// ── Postulación de vendedores (pública — sin auth) ────────────────────────────
+// POST /api/seller/apply
+router.post('/apply', async (req, res, next) => {
+  try {
+    const { nombre, email, whatsapp, zona, red, volumen, mensaje } = req.body;
+    if (!nombre || !email || !whatsapp || !zona || !red || !volumen) {
+      return errorResponse(res, 'Completá todos los campos obligatorios.', 400);
+    }
+
+    // Guardar postulación en settings como array JSON
+    const [[row]] = await pool.query(
+      "SELECT value FROM settings WHERE `key` = 'seller_applications' LIMIT 1"
+    );
+    const apps = row ? JSON.parse(row.value) : [];
+    apps.push({ nombre, email, whatsapp, zona, red, volumen, mensaje: mensaje || '', created_at: new Date().toISOString() });
+    await pool.query(
+      "INSERT INTO settings (`key`, `value`) VALUES ('seller_applications', ?) ON DUPLICATE KEY UPDATE `value` = ?",
+      [JSON.stringify(apps), JSON.stringify(apps)]
+    );
+
+    logger.info(`[Seller] Nueva postulación de ${nombre} (${email})`);
+    return successResponse(res, null, 'Postulación enviada con éxito', 201);
+  } catch (err) { next(err); }
+});
 
 // ── Guardia global ────────────────────────────────────────────────────────────
 router.use(auth, sellerOnly);

@@ -9,7 +9,10 @@ const mysql = require('mysql2/promise');
 const fs    = require('fs');
 const path  = require('path');
 
-const SQL_FILE = path.join(__dirname, 'schema.sql');
+const SQL_FILES = [
+  { name: 'schema.sql',        path: path.join(__dirname, 'schema.sql') },
+  { name: 'seller_schema.sql', path: path.join(__dirname, 'seller_schema.sql') },
+];
 
 const run = async () => {
   const conn = await mysql.createConnection({
@@ -24,9 +27,24 @@ const run = async () => {
 
   try {
     console.log('[Migrate] Conectado a MySQL');
-    const sql = fs.readFileSync(SQL_FILE, 'utf8');
-    await conn.query(sql);
-    console.log('[Migrate] ✅ Schema aplicado correctamente');
+
+    for (const { name, path } of SQL_FILES) {
+      try {
+        const sql = fs.readFileSync(path, 'utf8');
+        await conn.query(sql);
+        console.log(`[Migrate] ✅ ${name} aplicado correctamente`);
+      } catch (err) {
+        console.error(`[Migrate] ⚠️  Error en ${name}: ${err.message}`);
+        // Si falla solo por tablas ya existentes (IF NOT EXISTS), continuamos
+        if (err.code === 'ER_TABLE_EXISTS_ERROR') {
+          console.log(`[Migrate] → ${name}: tablas ya existentes, omitiendo`);
+        } else {
+          throw err;
+        }
+      }
+    }
+
+    console.log('[Migrate] ✅ Migración completada');
   } finally {
     await conn.end();
   }
